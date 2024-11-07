@@ -1,0 +1,45 @@
+//pseudo
+
+isDivisibleBy3(int number) -> bool
+  if number % 3 == 0
+      return true
+  end if
+  return false
+
+  main()
+      input number
+      isDivisibleBy3(number);
+      if true
+          print is  divisible by 3
+      else
+          print is not divisible by 3
+  end
+  
+
+
+
+
+//code
+#include <iostream>
+using namespace std;
+
+bool isDivisibleBy3(int number) {
+    if (number % 3 == 0){
+      return true;
+    }
+    return false;
+}
+
+int main() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+    bool result = isDivisibleBy3(number);
+    if (result) {
+        cout << number << " is divisible by 3." << endl;
+    } else {
+        cout << number << " is not divisible by 3." << endl;
+    }
+
+    return 0;
+}
