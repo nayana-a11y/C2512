@@ -32,4 +32,60 @@ pseudocode:
 isArmstrongTest()
 
 
+
+//code
+
+
+#include <iostream>
+#include <cmath> 
+using namespace std;
+
+
+bool isArmstrong(int number){
+    int copynumber = number;
+    int counter = 0;
+    
+    while(copynumber>0){
+        copynumber=copynumber/10;
+        counter++;
+    }
+    
+    copynumber=number;
+    int sum=0;
+    
+    while(copynumber>0){
+        int temp=copynumber%10;
+        sum+= pow(temp,counter);
+        copynumber=copynumber/10;
+    }
+    if(sum==number){
+        return true;
+    }
+    return false;
+}
+
+void isArmstrongTest(){
+    int number;
+    cout << "Enter a number";
+    cin >> number;
+    
+    bool result = isArmstrong(number);
+    if(result){
+        cout<< number << " is armstrong";
+        
+    }
+    else{
+        cout<< number << "is not armstrong";
+    }
+}
+
+int main()
+{
+    isArmstrongTest();
+    return 0;
+}
+
+
 #include <io.stream>
+
+bool isArmstrong
