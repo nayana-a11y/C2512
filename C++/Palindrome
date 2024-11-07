@@ -1,20 +1,50 @@
+//pseudo code
+
+isPalindrome(string) -> bool
+        length = strlen(string1)
+        for i to length/2
+            if (string1[i] != string1[length-i-1])
+                return true
+            end if
+        end for
+        return false
+end function
+
+main()
+        input string1
+        result = isPalindrome(string1);
+        if true
+            print string is not a palindrome
+        else
+            print string is a palindrome
+ 
+end function
+
+
+//code
 #include <iostream>
+#include <cstring> 
 using namespace std;
+
+bool isPalindrome(const char* string1){
+    int length = strlen(string1);
+    for(int i=0;i < length/2 ;i++){
+        if(string1[i] != string1[length-i-1]){
+            return true;
+           }
+        }
+        return false;
+}
+
 
 int main(){
     char string1[20];
-    int i, length;
-    int flag = 0;
     
-    cout << "Enter a string: "; cin >> string1;
-    length = strlen(string1);
-    for(i=0;i < length ;i++){
-        if(string1[i] != string1[length-i-1]){
-            flag = 1;
-            break;
-           }
-        }
-    if (flag) {
+    cout << "Enter a string: ";
+    cin >> string1;
+    bool result = isPalindrome(string1);
+
+    if (result) {
         cout << string1 << " is not a palindrome" << endl; 
     }    
     else {
