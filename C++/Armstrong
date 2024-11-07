@@ -84,8 +84,3 @@ int main()
     isArmstrongTest();
     return 0;
 }
-
-
-#include <io.stream>
-
-bool isArmstrong
