@@ -1,0 +1,41 @@
+//pseudo code
+
+pseudo function
+calculateAverage(number1,number2) -> avg
+    float average=(number1+number2)/2
+    return avg
+end function
+
+
+input number1
+input number2
+average= calculateAverage(number1, number2)
+print average
+
+
+
+//code
+
+#include <iostream>
+using namespace std;
+
+int calculateAverage(int number1, int number2){
+    float average=(number1+number2)/2;
+    return average;
+}
+
+int main(){
+    int number1, number2;
+    cout << "Enter num 1";
+    cin >> number1;
+    cout << "Enter num 2";
+    cin >> number2;
+    float average = calculateAverage(number1,number2);
+    cout << "The avg is" << average;
+    return 0;
+}
+
+    
+
+
+
