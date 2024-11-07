@@ -1,16 +1,55 @@
+//pseudo code
+findEvenOdd(int number) -> bool
+    if n%2 == 0
+        return true
+    end if
+    return false
+
+main()
+    input number
+    result = findEvenOdd(number);
+    if result == true
+        print number is even
+    end if
+    print number is odd
+
+
+
+//code
+
+
 #include <iostream>
 using namespace std;
 
-int main() {
-  int n;
-  cout << "Enter an integer: ";
-  cin >> n;
+bool findEvenOdd(int number){
+  if (number % 2 == 0){
+      return true;
+  }
+  else{
+      return false;
+  }
+}  
 
-  if ( n % 2 == 0)
-    cout << n << " is even.";
+int main() {
+  int number;
+  cout << "Enter an integer: ";
+  cin >> number;
+  
+  bool result = findEvenOdd(number);
+  if (result){
+       cout << number << " is even.";
+  }
   else
-    cout << n << " is odd.";
+  {
+    cout << number << " is odd.";  
+  }
 
   return 0;
 }
+
+
+
+
+
+
 
