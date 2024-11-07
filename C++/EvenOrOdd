@@ -1,36 +1,16 @@
-pseudo function:
+#include <iostream>
+using namespace std;
 
-function isArmstrong(number -> int) -> bool
-    copynumber = number
-    int counter = 0
-    while copynumber > 0
-        copynumber = copynumber/10
-        counter = counter + 1
-    end while
-    copynumber = number
-    int sum  = 0
-    while copynumber > 0
-          temp =  copynumber % 10
-          sum = sum + temp^counter
-          copynumber = copynumber / 10
-    end while
-    if sum == number
-           return true
-    return false
+int main() {
+  int n;
+  cout << "Enter an integer: ";
+  cin >> n;
 
-function isArmstrongTest(){
-        input number
-        bool result = isArmstrong(number)
-        if result == true
-            print "Armstrong"
-        else
-            print "Not Armstrong"
-        end if
+  if ( n % 2 == 0)
+    cout << n << " is even.";
+  else
+    cout << n << " is odd.";
+
+  return 0;
 }
-
-pseudocode: 
-isArmstrongTest()
-
-
-#include <io.stream>
 
