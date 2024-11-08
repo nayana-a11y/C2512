@@ -13,7 +13,6 @@ average= calculateAverage(number1, number2)
 print average
 
 
-
 //code
 
 #include <iostream>
