@@ -1,0 +1,531 @@
+To find average
+
+
+pseudofunctions:
+function findAverage(number1->int, number2->int)->int
+    average = (number1 + number2) / 2
+    return average
+
+function findAverageTest()
+    input number1, number2
+    result = findAverage(number1, number2)
+    print result
+
+pseudocode:
+findAverageTest()
+
+
+//C++ code
+#include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+
+float findAverage(int number1, int number2) 
+{
+    float average;
+
+    average = ((float)(number1 + number2) / 2.0f);
+
+    return average;
+}
+
+void findAverageTest(void) 
+{
+    int number1, number2;
+    float result;
+
+    cout << "Enter the numbers: ";
+    cin >> number1;
+    cin >> number2;
+
+    result = findAverage(number1, number2);
+
+    cout << "The average is: " << result << endl;
+}
+
+int main(void) 
+{
+    findAverageTest();
+
+    return 0;
+}
+
+
+
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int num1, num2;
+    cout << "First Number:"; cin >> num1;
+    cout << "Second Number:"; cin >> num2;
+    
+    float avg = ((float)(num1 + num2) / 2.0f);
+    
+    cout << "Average is " << avg;
+    
+    return 0;
+}
+
+
+#include<iostream>
+using namespace std;
+
+float findAverage(int number1, int number2)
+{
+    float average = ((float)(number1 + number2) / 2.0f);
+
+    return average;
+}
+
+int main()
+{
+    int num1, num2;
+    cout << "First Number:"; cin >> num1;
+    cout << "Second Number:"; cin >> num2;
+    
+    float avg = findAverage(num1, num2);
+    
+    cout << "Average is " << avg;
+    
+    return 0;
+}
+
+
+#include<iostream>
+using namespace std;
+
+float findAverage(int number1, int number2)
+{
+    float average = ((float)(number1 + number2) / 2.0f);
+
+    return average;
+}
+
+void findAverageTest(void)
+{
+    int num1, num2;
+    cout << "First Number:"; cin >> num1;
+    cout << "Second Number:"; cin >> num2;
+    
+    float avg = findAverage(num1, num2);
+    
+    cout << "Average is " << avg;
+}
+
+int main()
+{
+    findAverageTest();
+
+    return 0;
+}
+
+
+
+
+pseudofunction:
+
+function calculateCube(number->int)->int
+    return number*number*number
+  
+function calculateCubeTest()
+    input number
+    result=calculateCube(number)
+    print result
+End function
+
+pseudocode:
+
+calculateCubeTest()
+
+
+  //C++ code
+
+#include <iostream>
+using namespace std;
+int calculateCube(int number)
+{
+    return number*number*number;
+}
+void calculateCubeTest()
+{
+    int number,result;
+    cout << "Enter a number: ";
+    cin >> number;
+    result = calculateCube(number);
+    cout << "The cube of the number is: "<< result << endl;
+}
+int main()
+{
+    calculateCubeTest();
+    return 0;
+}
+
+
+//pseudocode
+
+pseudofunction:
+
+function printNaturalNumbers(n->int)->int
+    for i = 1..n
+        print i
+    End for
+
+function printNaturalNUmbersTest()
+    input n
+    printNaturalNumbers(n)
+
+pseudocode:
+
+printNaturalNUmbersTest()
+
+
+//C++ code
+
+#include <iostream>
+using namespace std;
+void printNaturalNUmbers(int n)
+{
+    int i;
+    for(i=1;i<=n;i++)
+        cout << i << endl;
+}
+void printNaturalNUmbersTest()
+{
+    int n;
+    cout << "Enter number: ";
+    cin >> n;
+    printNaturalNUmbers(n);
+}
+int main()
+{
+    printNaturalNUmbersTest();
+    return 0;
+}
+
+
+
+=========================Josh Team============================
+3. To find the square:-
+
+pseudofunction:
+
+findSquare(number -> int) -> int
+	return number * number
+
+findSquareTest() 
+	input number
+	square = findSquare(number)
+	print square
+
+pseudocode:
+findSquareTest()
+
+
+
+4. To swap two numbers:-
+``` Team
+pseudofunction:
+function swapNums(&number1, &number2)
+	temp = number1
+	number1 = number2
+	number2 = temp
+	
+function swapNumsTest()
+	input number1, number2
+	swapNums(number1, number2)
+	print number1, number2
+
+pseudocode:
+swapNumsTest()
+
+
+//code
+#include <iostream>
+using std::cin;
+using std::cout;
+
+void swapNums(int& number1, int& number2)
+{
+    int temp = number1;
+    number1 = number2;
+    number2 = temp;
+}
+
+void swapNumsTest(void)
+{
+    int number1, number2;
+
+    cout << "Enter number 1: ";
+    cin >> number1;
+    cout << "Enter number 2: ";
+    cin >> number2;
+
+    swapNums(number1, number2);
+
+    cout << "New Num1: " << number1;
+    cout << "\nNew Num2: " << number2;
+}
+
+int main(void)
+{
+    swapNumsTest();
+
+    return 0;
+}
+```
+
+``` class discussion : Nayana from Josh Team, Venkatesh
+#include<iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+void swapNums(int& number1, int& number2)
+{
+	int temp = number1;
+	number1 = number2;
+	number2 = temp;
+}
+
+void swapNumsTest(void)
+{
+  int number1, number2;
+
+	cout << "Enter Number 1:"; 
+	cin >> number1;    
+	cout << "Enter Number 2:"; 
+	cin >> number2;
+
+	swapNums(number1, number2);
+
+	cout << "After Swap: Number1=" << number1 << ", Number2=" << number2 << endl;
+}
+
+int main(void)
+{
+    swapNumsTest();
+
+    return 0;
+}
+
+
+
+9. To check whether a number is armstrong or not
+pseudo function:
+
+function isArmstrong(number -> int) -> bool
+	copyNumber = number
+	int counter = 0
+
+	while copyNumber > 0
+		copyNumber = copyNumber/10
+		counter = counter + 1
+	end while
+
+	copyNumber = number
+	int sum = 0
+
+	while copyNumber > 0
+		temp = copyNumber % 10
+		sum = sum + temp^counter
+		copyNumber = copyNumber / 10
+	end while
+
+	if sum == number
+		return true
+	return false
+
+function isArmstrongTest(){
+	input number
+	bool result = isArmStrong(number)
+
+	if result == true
+		print "Armstrong"
+	else
+		print "Not Armstrong"
+	end if
+}
+
+pseudocode:
+
+isArmStrongTest()
+
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+bool isArmstrong(int number){
+    int copy = number;
+    int counter = 0;
+    while(copy > 0){
+        copy /= 10;
+        counter++;
+    }
+    copy = number;
+    int sum = 0;
+    while(copy > 0){
+        int temp = copy % 10;
+        sum = sum + (int)pow(temp,counter);
+        copy /= 10;
+    }
+
+    if(sum == number)
+        return true;
+    return false;
+}
+
+void isArmstrongTest(){
+    int number;
+    cout << "Input a number: ";
+    cin >> number;
+    bool result = isArmstrong(number);
+    if(result)
+        cout << "It's Armstrong";
+    else
+        cout << "Not Armstrong";
+}
+
+int main()
+{
+    isArmstrongTest();
+
+    return 0;
+}
+
+
+pseudocode:
+
+pseudo function:
+function isDivisibleByThree(number->int)
+    if((number % 3) == 0)  //checking whether the number is divisible by 3
+        return true
+    end if
+    
+    return false
+
+
+
+//   function isDivisibleByThreeTest()
+//        input number
+//        result = isDivisibleByThree(number)
+//        print result
+
+function isDivisibleByThreeTesttwo()
+    input number
+    result = isDivisibleByThree(number)
+    if (result == true)
+        print "The number is divisible by 3"
+    else
+        print "The number is not divisible by 3"
+
+pseudocode:
+    //   isDivisibleByThreeTest()
+    isDivisibleByThreeTesttwo()
+    ```
+
+
+```
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+// Function to check if a number is divisible by 3
+bool isDivisibleByThree(int number) 
+{
+    // Checking whether the number is divisible by 3
+    if ((number % 3) == 0) 
+    {  
+        return true;
+    }
+
+    return false;
+}
+
+// Function to test isDivisibleByThree by printing the raw result
+void isDivisibleByThreeTest(void) 
+{
+    int number;
+
+    cout << "Enter a number: ";
+    cin >> number;
+
+    bool result = isDivisibleByThree(number);
+
+    cout << result << endl;
+}
+
+// Function to test isDivisibleByThree with a descriptive message
+void isDivisibleByThreeTesttwo(void) 
+{
+    int number;
+
+    cout << "Enter a number: ";
+    cin >> number;
+
+    bool result = isDivisibleByThree(number);
+
+    if (result == true) 
+    {
+        cout << "The number is divisible by 3" << endl;
+    } 
+    else 
+    {
+        cout << "The number is not divisible by 3" << endl;
+    }
+}
+
+int main(void) {
+    // Call both test functions
+    isDivisibleByThreeTest();
+    isDivisibleByThreeTesttwo();
+
+    return 0;
+}
+
+#include<iostream>
+using std::cin;
+using std::cout;
+
+bool isDivisibleByThree(int number)
+{
+    if((number % 3) == 0) 
+    {
+        return true;
+    }
+    
+    return false;
+}
+
+void isDivisibleByThreeTesttwo(void)
+{
+    int number;
+    
+    cout << "Enter Number:"; 
+    cin >> number;
+    
+    bool result = isDivisibleByThree(number);
+    
+    if (result)
+    {
+        cout << "The number is divisible by 3";
+    }
+    else
+    {
+        cout << "The number is not divisible by 3";
+    }
+}
+
+
+int main(void)
+{
+    isDivisibleByThreeTesttwo();
+    
+    return 0;
+}
