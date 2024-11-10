@@ -1,13 +1,40 @@
+//pseudofunctons:
+
+function findCube(int num) -> int
+    cube = num * num * num
+    return cube
+
+function findCubeTest(void)
+    input number
+    cube = findCube(int number)
+    print cube
+
+main
+    findCubeTest
+
+
+//code
 
 #include <iostream>
 using namespace std;
 
-int main(){
-    int n, cube;
-    cout << "Enter a number: ";
-    cin >> n;
+int findCube(int n){
+    int cube;   
     cube = n * n * n;
-    cout << "cube of " << n << " is: " << cube;
+    return cube;
+}
     
+void findCubeTest(void){
+    int number, cube;
+    cout << "Enter a number: ";
+    cin >> number;
+    cube = findCube(number);
+    cout << "cube of " << number << " is: " << cube;
+}
+
+int main(){
+    findCubeTest();
     return 0;
 } 
+
+
