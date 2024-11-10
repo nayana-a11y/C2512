@@ -9,7 +9,7 @@ function findCubeTest(void)
     cube = findCube(int number)
     print cube
 
-main
+pseudocode:
     findCubeTest
 
 
@@ -32,7 +32,7 @@ void findCubeTest(void){
     cout << "cube of " << number << " is: " << cube;
 }
 
-int main(){
+int main(void){
     findCubeTest();
     return 0;
 } 
