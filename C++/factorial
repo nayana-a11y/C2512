@@ -1,0 +1,29 @@
+pseudofunctions:
+
+function factorial(number-> int) -> int
+    if (number < 0)
+        return -1
+
+    int result = 1
+
+    for int i = 1...number              
+        result= (result * i)            
+    end for
+    
+    return result
+
+function factorialTest(void) -> void
+    input number
+    int result = factorial(number)
+
+    if (result == -1)
+        print("Invalid number")
+    else
+        print("Factorial is" result)
+
+pseudo code:
+
+factorialTest()
+
+
+//code
