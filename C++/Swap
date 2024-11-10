@@ -1,0 +1,50 @@
+
+pseudofunction:
+function swapNums(&number1, &number2)
+	temp = number1
+	number1 = number2
+	number2 = temp
+	
+function swapNumsTest()
+	input number1, number2
+	swapNums(number1, number2)
+	print number1, number2
+
+pseudocode:
+swapNumsTest()
+
+
+//code
+
+#include <iostream>
+using std::cin;
+using std::cout;
+
+void swapNums(int& number1, int& number2)
+{
+    int temp = number1;
+    number1 = number2;
+    number2 = temp;
+}
+
+void swapNumsTest(void)
+{
+    int number1, number2;
+
+    cout << "Enter number 1: ";
+    cin >> number1;
+    cout << "Enter number 2: ";
+    cin >> number2;
+
+    swapNums(number1, number2);
+
+    cout << "New Num1: " << number1;
+    cout << "\nNew Num2: " << number2;
+}
+
+int main(void)
+{
+    swapNumsTest();
+
+    return 0;
+}
