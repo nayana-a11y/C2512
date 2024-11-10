@@ -1,16 +1,40 @@
 
+//pseudofunctons:
+
+function findSquare(int num) -> int
+    square = num * num
+    return square
+
+function findSquareTest(void)
+    input number
+    square = findSquare(int number)
+    print square
+
+main
+    findSquareTest
+
+
+//code
+
 #include <iostream>
 using namespace std;
 
-int main(){
-    int n, square;
-    
-    cout << "Enter a number: ";
-    cin >> n;
-    
+int findSquare(int n){
+    int square;   
     square = n * n;
+    return square;
+}
     
-    cout << "Square of " << n << " is: " << square;
-    
+void findSquareTest(void){
+    int number, square;
+    cout << "Enter a number: ";
+    cin >> number;
+    square = findSquare(number);
+    cout << "Square of " << number << " is: " << square;
+}
+
+int main(){
+    findSquareTest();
+
     return 0;
 } 
