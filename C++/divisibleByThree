@@ -1,12 +1,12 @@
-//pseudo
+//pseudofunctions
 
-isDivisibleBy3(int number) -> bool
+function isDivisibleBy3(int number) -> bool
   if number % 3 == 0
       return true
   end if
   return false
 
-  main()
+function isDivisibleBy3Test()
       input number
       isDivisibleBy3(number);
       if true
@@ -14,12 +14,15 @@ isDivisibleBy3(int number) -> bool
       else
           print is not divisible by 3
   end
-  
+
+pseudocode:
+    isDivisibleBy3Test()
 
 
 
 
 //code
+
 #include <iostream>
 using namespace std;
 
@@ -30,16 +33,20 @@ bool isDivisibleBy3(int number) {
     return false;
 }
 
-int main() {
-    int number;
-    cout << "Enter a number: ";
-    cin >> number;
-    bool result = isDivisibleBy3(number);
-    if (result) {
-        cout << number << " is divisible by 3." << endl;
-    } else {
-        cout << number << " is not divisible by 3." << endl;
-    }
+void isDivisibleBy3Test(void){
+  int number;
+  cout << "Enter a number: ";
+  cin >> number;
+  bool result = isDivisibleBy3(number);
+  if (result) {
+    cout << number << " is divisible by 3." << endl;
+  } else {
+    cout << number << " is not divisible by 3." << endl;
+  }
+}
+    
 
-    return 0;
+int main() {
+  isDivisibleBy3Test();
+  return 0;
 }
