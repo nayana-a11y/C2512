@@ -1,29 +1,75 @@
+
+pseudofunction:
+
+function isPrime(number -> int) -> bool
+	if (number < 2)
+		return false
+	end if
+
+	int squareRoot = sqrt(number)
+
+	for i in (2..squareRoot)
+		if (number % i) == 0
+			return false
+		end if
+	end for
+	
+	return true
+	
+function isPrimeTest(void) -> void
+	input number
+
+	if (isPrime(number))
+		print "Number is prime"
+	else
+		print "Number isn't prime"
+	end if
+
+pseudocode:
+isPrimeTest()
+
+
 //code
 
+#include<iostream>
+#include<cmath>
+using std::cout;
+using std::cin;
 
-#include <iostream>
-using namespace std;
+bool isPrime(int number)
+{
+	if (number < 2){
+		return false;
+	}
+	
+	int squareRoot = (int)sqrt(number);
 
-
-bool isPrime(int num){
-    bool flag=true;
-    for(int i = 2; i <= num / 2; i++) {
-       if(num % i == 0) {
-          flag = false;
-          break;
-       }
-    }
-    return flag;
+	for (int i = 2; i <= squareRoot; i ++){
+		if ((number % i) == 0){
+			return false;
+		}
+	}
+	
+	return true;
 }
-int main(){
-   int num;
-   bool flag;
-   cout<<"Enter any number: ";
-   cin>>num;
-   flag = isPrime(num);
-   if (flag==true)
-      cout<<num<<" is a prime number";
-   else
-      cout<<num<<" is not a prime number";
-   return 0;
+	
+void isPrimeTest(void){
+    int number;
+    
+	cout << "Enter a number: ";
+	cin >> number;
+
+	if (isPrime(number)){
+		cout << number << " is prime";
+	}
+	else{
+		cout << number << " is not prime";
+	}
+}
+
+int main(void)
+{
+    isPrimeTest();
+    
+    return 0;
 }
