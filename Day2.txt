@@ -1,5 +1,4 @@
-To find average
-
+// find average
 
 pseudofunctions:
 function findAverage(number1->int, number2->int)->int
@@ -21,8 +20,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-float findAverage(int number1, int number2) 
-{
+float findAverage(int number1, int number2) {
     float average;
 
     average = ((float)(number1 + number2) / 2.0f);
@@ -30,8 +28,7 @@ float findAverage(int number1, int number2)
     return average;
 }
 
-void findAverageTest(void) 
-{
+void findAverageTest(void) {
     int number1, number2;
     float result;
 
@@ -44,8 +41,7 @@ void findAverageTest(void)
     cout << "The average is: " << result << endl;
 }
 
-int main(void) 
-{
+int main(void) {
     findAverageTest();
 
     return 0;
@@ -124,7 +120,8 @@ int main()
 }
 
 
-
+.............................
+//cube
 
 pseudofunction:
 
@@ -164,6 +161,8 @@ int main()
     return 0;
 }
 
+.......................................
+//print natural numbers
 
 //pseudocode
 
@@ -206,11 +205,8 @@ int main()
     return 0;
 }
 
-
-
-=========================Josh Team============================
-3. To find the square:-
-
+........................................................
+//square
 pseudofunction:
 
 findSquare(number -> int) -> int
@@ -224,10 +220,8 @@ findSquareTest()
 pseudocode:
 findSquareTest()
 
-
-
-4. To swap two numbers:-
-``` Team
+......................................
+//swap
 pseudofunction:
 function swapNums(&number1, &number2)
 	temp = number1
@@ -313,8 +307,8 @@ int main(void)
 }
 
 
-
-9. To check whether a number is armstrong or not
+.............................
+// armstrong or not
 pseudo function:
 
 function isArmstrong(number -> int) -> bool
@@ -398,7 +392,8 @@ int main()
     return 0;
 }
 
-
+......................................
+//divisible by 3
 pseudocode:
 
 pseudo function:
