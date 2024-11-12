@@ -14,16 +14,16 @@ function minAge(ages -->[int] , size -->int) -->int
 function isOddAge(age -->int) -->bool
     for i..size
 
-        if age[i] % 2 != 0
+        if age % 2 != 0
             return true
         end if
         return false
     end for
 
-    
-"Read patients' ages (integer) from keyboard till we read less than zero 
-by using array / collection."
-Find average age (integer), 
+.....
+Part 1:
+Read patients' ages (integer) from keyboard till we read less than zero by using array / collection."   -> done
+Find average age (integer),                                                                             -> done
 prime ages sum(example: 11, prime number age), 
 teenager ages sum, 
 minimum age, 
@@ -33,35 +33,40 @@ Check minimum age is also prime age.
 Use coding standards and best practices to write pseudo code and c++ code.
 Plan the task codes to make as reusable functions.
 
+Part 2:
+Implement avg age and min age without using arrays.
+
 
 pseudo function:
-    function readAges(ages -> [int]) -> int                     ->Pitchumani
-    function findAvg(ages -> [int], size -> int) -> int         ->Pitchumani
+    function readAges(ages -> [int]) -> int                     ->Pitchumani        -> done
+    function findAvg(ages -> [int], size -> int) -> int         ->Pitchumani        -> done
     function isPrime(age -> int) -> bool                        ->Josh
-    function sumOfAge(ages -> [int], size -> int) -> int        ->Josh
-    function sumPrimeAge(ages -> [int], size -> int) -> int     ->Bhagya
+    function findSumOfAge(ages -> [int], size -> int) -> int        ->Josh              -> done
+    function findSumOfPrime(ages -> [int], size -> int) -> int     ->Bhagya
     function isTeenage(age -> int) -> bool                      ->Bhagya
-    function teeageSum(ages -> [int], size -> int)              ->Bhagya
-    function minAge(ages -> [int], size ->int) -> int           ->Nayana
+    function findSumOfTeenage(ages -> [int], size -> int)             ->Bhagya
+    function findMinAge(ages -> [int], size ->int) -> int           ->Nayana
     function isOddAge(age -> int) -> bool                       ->Nayana
     function findSecondMaxAdultAge(ages -> [int], size) -> int  ->Dhaheen
+    function sumOfOddAge(ages-> [int], size -> int) -> int      ->Josh
 
     testFunction                                                ->Dhaheen
 
-__________________________________________________________________________________________________
-
-    Pitchumani:
+______________________________________________Pitchumani____________________________________________________
 
     #define MAX_SIZE 100
 
-    function readAges(ages -->[int]) -->int
-        int index=0
+    function readAges(ages-> [int]) -> int
+
+        int index = 0
         int age;
+
         print "Enter age"
         input age
-        while(age>0)
-            ages[index]=age
-            index = index+1
+
+        while(age > 0)
+            ages[index] = age
+            index = index + 1
             input age
 
         end while
@@ -69,20 +74,17 @@ ________________________________________________________________________________
         return index
  
 
-    function findAvg(ages -->[int] , size -->int) --> int
-        int avg = sumOfAge(ages -->[int] , size -->int)
-        return ((int)avg/2)
-    end function
+    function findAvg(ages-> [int], size-> int) -> int
 
-    functionTest()
-        int ages[MAX_SIZE]
-        int size = readAges(ages)
-        int avgOfAge = findAvg(ages, size)
-        print avgOfAge
-__________________________________________________________________________________________________
+        int avg = findSumOfAge(ages, size)  //review
 
-    Josh:
-    function isPrime(age ->int)-> bool
+        return ((int) avg / 2)
+
+
+
+______________________________________________Josh____________________________________________________
+
+    function isPrime(age-> int) -> bool
         if (age < 2)
             return false
         end if
@@ -90,14 +92,14 @@ ________________________________________________________________________________
         int squareRoot = sqrt(age)
 
         for i in (2..squareRoot)
-            if (age % i) == 0
+            if ((age % i) == 0)
                 return false
             end if
         end for
         
         return true
 
-    function sumOfAge(ages-> [int], size-> int)-> int
+    function findSumOfAge(ages-> [int], size-> int) -> int
         int sum = 0
 
         for i in (0..(size-1))
@@ -105,54 +107,61 @@ ________________________________________________________________________________
         end for
 
         return sum
-__________________________________________________________________________________________________
 
-    Bhagya:
+    function sumOfOddAge(ages-> [int], size -> int) -> int
+        int sum = 0
 
-    function sumPrimeAge(ages -> [int], size -> int)
-
-        Initialize sum to 0
-
-        For i from 0 to size - 1
-            If isPrime(ages[i]) is true
-                Add ages[i] to sum
-            End if
+        for i in (0..(size-1))
+            if (isOddAge(ages[i]))
+                sum = sum + ages[i]
+            end if
         end for
 
-        Return sum
+        return sum
+_____________________________________________Bhagya_____________________________________________________
+
+    function findSumOfPrime(ages-> [int], size-> int) -> int
+
+        int sum = 0
+
+        for i in (0..(size-1))
+            if (isPrime(ages[i]))
+                sum = sum + ages[i]
+            end if
+        end for
+
+        return sum
 
 
-    function isTeenage(age)
+    function isTeenage(age-> int) -> bool
 
-        If ((age >= 13) and (age <= 19))
-            Return true
-        Else
-            Return false
+        if ((age >= 13) and (age <= 19))
+             true
+        else
+            return false
         
 
 
-    function teenageSum(ages -> [int], size -> int)
+    function findSumOfTeenage(ages -> [int], size -> int)
 
-        Initialize sum to 0
+        int sum = 0
 
-            For i from 0 to size - 1
-                If isTeenage(ages[i]) is true
-                    Add ages[i] to sum
-                End if
-            end For
+        for i in (0..(size-1))
+            if (isTeenage(ages[i]))
+                sum = sum + ages[i]
+            end if
+        end for
 
-            Return sum
+        return sum
             
 
-__________________________________________________________________________________________________
+______________________________________________Nayana____________________________________________________
 
-    Nayana:
-
-    function minAge(ages ->[int] , size ->int) ->int
+    function findMinAge(ages-> [int], size-> int) -> int
         min = 0
 
-        for i..size
-            if ages[i] < min
+        for i in (0..(size-1))
+            if (ages[i] < min)
                 min = ages[i]
             end if
         end for 
@@ -160,41 +169,39 @@ ________________________________________________________________________________
         return min    
 
 
-    function isOddAge(age ->int) ->bool
-        for i..size
-            if age[i]/2==0
-                return false
-            end if
-            return true
-        end for
+    function isOddAge(age-> int) -> bool
+        
+        if ((age % 2) == 0)          
+            return false
+        end if
+        return true
+        
     
-    function oddSum(ages -> [int], size -> int)
+    function sumOdd(ages-> [int], size-> int) -> int
 
-        Initialize sum to 0
+        int sum = 0
 
-            For i from 0 to size - 1
-                If isOddAge(ages[i]) is true
-                    Add ages[i] to sum
-                End if
-            end For
+        for i in (0..(size-1))
+            if (isOddAge(ages[i]))
+                sum = sum + ages[i]
+            end if
+        end for
 
-            Return sum
-__________________________________________________________________________________________________
+        return sum
+________________________________________________Dhaheen__________________________________________________
 
-    Dhaheen:
-
-    function findSecondMaxAdultAge(ages -> [int], size -> int) -> int
+    function findSecondMaxAdultAge(ages-> [int], size-> int) -> int
         int firstMax = 0
         int secondMax = 0
 
-        for I in 0..(size-1)
-            if (ages[i] > 18 && ages[i] > firstMax)
+        for i in (0..(size-1))
+            if (ages[i] >= 18 && ages[i] > firstMax)
                 firstMax = ages[i]
             end if
         end for
         
-        for I in 0..size-1
-            if( (ages[i] > 18) && (ages[i] > secondMax) && (ages[i] < firstMax) )
+        for i in (0..(size-1))
+            if ((ages[i] >= 18) && (ages[i] > secondMax) && (ages[i] < firstMax))
                 secondMax = ages[i]
             end if
         end for	
@@ -205,81 +212,25 @@ ________________________________________________________________________________
 
     function testFunction()
 
-	int ages[MAX_SIZE]
-	size = readAges()
-	averageAge = findAvg(ages, size)
-	primeAgeSum = SumPrimeAge(ages, size) 
-	teenSum = teenageSum(ages, size)
-	minimumAge = minAge(ages, size)
-	oddAgeSum = oddSum(ages, size)
-	secondMaxAdultAge = findSecondMaxAdultAge(ages, size)
-	
-	print averageAge
-	print primeAgeSum
-	print teenSum
-	print minimumAge
-	print oddAgeSum
-	if(isPrime(minimumAge))
-		print("minimum age is prime")
-	else
-		print("minimum age is not prime")
+        /*                                  
+        int ages[MAX_SIZE]   
+        size = readAges()
+        averageAge = findAvg(ages, size)
+        print averageAge
+        */
 
-
-
-
-__________________________________________________________________________________________________
-
-#include <iostream>
-#define MAX_SIZE 100
-using namespace std;
-
-int readAges(int ages[]){
-    int index=0;
-    int age;
-    cout << "Enter ages:" << endl;
-    cin >> age;
-    while(age>0){
-        ages[index]=age;
-        index = index+1;
-        cin >> age;
-    }
-    return index;
-}
-
-int sumOfAge(int ages[], int size){
-        int sum = 0;
-
-        for (int i=0; i<size ;i++){
-            sum = sum + ages[i];
-            
-        }
-        return sum;
-}
-
-int findAvg(int ages[], int size){ 
-    
-    int sumAge = sumOfAge(ages, size);
-    int avg = sumAge/size;
-    
-    return avg;
-}
-
-void functionTest(){
-    
-    int ages[MAX_SIZE];
-    
-    int size = readAges(ages);
-    
-    int avgOfAge = findAvg(ages, size);
-    
-    cout << "Average of input age: " << avgOfAge << endl;
-    
-}
-
-
-
-int main()
-{   
-    functionTest();
-    return 0;
-}
+        primeAgeSum = findSumOfPrime(ages, size) 
+        teenSum = findSumOfTeenage(ages, size)
+        minimumAge = findMinAge(ages, size)
+        oddAgeSum = sumOfOddAge(ages, size)
+        secondMaxAdultAge = findSecondMaxAdultAge(ages, size)
+        
+        print averageAge
+        print primeAgeSum
+        print teenSum
+        print minimumAge
+        print oddAgeSum
+        if(isPrime(minimumAge))
+            print("minimum age is prime")
+        else
+            print("minimum age is not prime")
