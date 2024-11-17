@@ -1,0 +1,888 @@
+
+pseudo function:
+
+function isArmstrong(number -> int) -> bool
+    copynumber = number
+    int counter = 0
+    while copynumber > 0
+        copynumber = copynumber/10
+        counter = counter + 1
+    end while
+    copynumber = number
+    int sum  = 0
+    while copynumber > 0
+          temp =  copynumber % 10
+          sum = sum + temp^counter
+          copynumber = copynumber / 10
+    end while
+    if sum == number
+           return true
+    return false
+
+function isArmstrongTest(){
+        input number
+        bool result = isArmstrong(number)
+        if result == true
+            print "Armstrong"
+        else
+            print "Not Armstrong"
+        end if
+}
+
+pseudocode: 
+isArmstrongTest()
+
+
+
+//code
+
+
+#include <iostream>
+#include <cmath> 
+using namespace std;
+
+
+bool isArmstrong(int number){
+    int copynumber = number;
+    int counter = 0;
+    
+    while(copynumber>0){
+        copynumber=copynumber/10;
+        counter++;
+    }
+    
+    copynumber=number;
+    int sum=0;
+    
+    while(copynumber>0){
+        int temp=copynumber%10;
+        sum+= pow(temp,counter);
+        copynumber=copynumber/10;
+    }
+    if(sum==number){
+        return true;
+    }
+    return false;
+}
+
+void isArmstrongTest(){
+    int number;
+    cout << "Enter a number";
+    cin >> number;
+    
+    bool result = isArmstrong(number);
+    if(result){
+        cout<< number << " is armstrong";
+        
+    }
+    else{
+        cout<< number << "is not armstrong";
+    }
+}
+
+int main()
+{
+    isArmstrongTest();
+    return 0;
+}
+
+avgof2
+
+//pseudo code
+
+pseudo function
+calculateAverage(number1,number2) -> float
+    float average=(number1+number2)/2
+    return average
+end function
+
+calculateAverageTest(number1,number2)
+    input number1
+    input number2
+    average= calculateAverage(number1, number2)
+    print average
+
+int main
+    calculateAverageTest(number1,number2)
+
+
+//code
+
+#include <iostream>
+using namespace std;
+
+int calculateAverage(int num1, int num2){
+    float average=(num1 + num2) / 2;
+    return average;
+}
+
+float calculateAverageTest(void){
+    int number1, number2;
+    cout << "Enter number 1 ";
+    cin >> number1;
+    cout << "Enter number 2 ";
+    cin >> number2;
+    float average = calculateAverage(number1,number2);
+    cout << " The avg is" << average;
+    return 0;
+}
+
+int main(){
+    calculateAverageTest();
+}
+
+
+
+EvenOrOdd
+
+//pseudo code
+findEvenOdd(int number) -> bool
+    if n%2 == 0
+        return true
+    end if
+    return false
+
+main()
+    input number
+    result = findEvenOdd(number);
+    if result == true
+        print number is even
+    end if
+    print number is odd
+
+
+
+//code
+
+
+#include <iostream>
+using namespace std;
+
+bool findEvenOdd(int number){
+  if (number % 2 == 0){
+      return true;
+  }
+  else{
+      return false;
+  }
+}  
+
+int main() {
+  int number;
+  cout << "Enter an integer: ";
+  cin >> number;
+  
+  bool result = findEvenOdd(number);
+  if (result){
+       cout << number << " is even.";
+  }
+  else
+  {
+    cout << number << " is odd.";  
+  }
+
+  return 0;
+}
+
+LargestOfThree
+
+//pseudocode
+ 
+BEGIN
+NUMBER n1,n2,n3
+ 
+INPUT n1
+INPUT n2
+INPUT n3
+ 
+IF n1>n2 AND n1>n3  THEN
+     OUTPUT n1+ "is higher"
+ELSE IF n2 > n3 THEN
+     OUTPUT n2 + "is higher"
+ELSE
+     OUTPUT n3 "is higher"
+ENDIF
+ 
+END
+
+//code
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+    int n1, n2, n3;
+
+    cout << "Enter three numbers: ";
+    cin >> n1 >> n2 >> n3;
+    if(n1 >= n2 && n1 >= n3)
+        cout << "Largest number: " << n1;
+
+    else if(n2 >= n1 && n2 >= n3)
+        cout << "Largest number: " << n2;
+    
+    else 
+        cout << "Largest number: " << n3;
+  
+    return 0;
+}
+
+Palindrome
+
+//pseudo code
+
+isPalindrome(string) -> bool
+        length = strlen(string1)
+        for i to length/2
+            if (string1[i] != string1[length-i-1])
+                return true
+            end if
+        end for
+        return false
+end function
+
+main()
+        input string1
+        result = isPalindrome(string1);
+        if true
+            print string is not a palindrome
+        else
+            print string is a palindrome
+ 
+end function
+
+
+//code
+#include <iostream>
+#include <cstring> 
+using namespace std;
+
+bool isPalindrome(const char* string1){
+    int length = strlen(string1);
+    for(int i=0;i < length/2 ;i++){
+        if(string1[i] != string1[length-i-1]){
+            return true;
+           }
+        }
+        return false;
+}
+
+
+int main(){
+    char string1[20];
+    
+    cout << "Enter a string: ";
+    cin >> string1;
+    bool result = isPalindrome(string1);
+
+    if (result) {
+        cout << string1 << " is not a palindrome" << endl; 
+    }    
+    else {
+        cout << string1 << " is a palindrome" << endl; 
+    }
+    return 0;
+}
+
+
+Swap
+
+
+pseudofunction:
+function swapNums(&number1, &number2)
+	temp = number1
+	number1 = number2
+	number2 = temp
+	
+function swapNumsTest()
+	input number1, number2
+	swapNums(number1, number2)
+	print number1, number2
+
+pseudocode:
+swapNumsTest()
+
+
+//code
+
+#include <iostream>
+using std::cin;
+using std::cout;
+
+void swapNums(int& number1, int& number2)
+{
+    int temp = number1;
+    number1 = number2;
+    number2 = temp;
+}
+
+void swapNumsTest(void)
+{
+    int number1, number2;
+
+    cout << "Enter number 1: ";
+    cin >> number1;
+    cout << "Enter number 2: ";
+    cin >> number2;
+
+    swapNums(number1, number2);
+
+    cout << "New Num1: " << number1;
+    cout << "\nNew Num2: " << number2;
+}
+
+int main(void)
+{
+    swapNumsTest();
+
+    return 0;
+}
+
+
+Test
+
+// Write a program to read 10 numbers from the user, find their sum. [with array]
+
+//pseudofunction
+
+function findSum(int numbers[], int size) -> int
+    sum = 0
+    
+    for i..size
+        sum += numbers[i]
+    
+    return sum
+
+function findSumTest() 
+    input numbers
+    
+    sum = findSum(numbers)
+
+    print sum
+
+pseudocode:
+
+    findSumTest()
+
+
+//code
+#include <iostream>
+using namespace std;
+
+int findSum(int numbers[], int size) {
+    int sum = 0;
+    
+    for (int i = 0; i < size; i++) {
+        sum += numbers[i];
+    }
+    
+    return sum;
+}
+
+void findSumTest() {
+    int numbers[10];
+    
+    cout << "Enter the 10 numbers: " << endl;
+    
+    for (int i = 0; i < 10; i++) {
+        cin >> numbers[i];
+    }
+    
+    int sum = findSum(numbers, 10);
+    cout << "Sum of 10 numbers: " << sum << endl;
+}
+
+int main() {
+    findSumTest();
+    
+    return 0;
+}
+
+
+
+...............................
+
+
+//Write a program to read 10 numbers from the user, find their sum [without using array]
+
+//pseudofunctions:
+function findSumTest(int) -> int
+    sum = 0
+    input number
+
+    sum += number; 
+
+    print sum 
+
+pseudocode:
+    
+    findSumTest()
+
+//code
+#include <iostream>
+using namespace std;
+
+void findSumTest() {
+    int number, sum = 0;
+
+    cout << "Enter 10 numbers: " << endl;
+
+    for (int i = 1; i <= 10; i++) {
+        cin >> number;
+        sum += number;  
+    }
+
+    cout << "Sum of 10 numbers: " << sum << endl;
+}
+
+int main() {
+    
+    findSumTest();
+    
+    return 0;
+}
+
+
+.................
+
+
+Write a program to find the highest number from 10 numbers.
+(user should input numbers)
+The highest number should be returned from a function
+
+
+function findHighest(int a) -> int
+    greatest = a[0]
+     
+    for i..10
+        if a[i] > greatest
+            greatest = a[i]
+        end if
+    end for
+    
+    return greatest
+
+function findHighestTest(void) 
+
+    input numbers    
+
+    greatest = findHighest()
+
+    print greatest
+
+
+pseudocode:
+    findHighestTest();
+  
+
+
+//code
+
+#include <iostream>
+using namespace std;
+
+int findHighest(int a[]) {
+    int greatest = a[0];
+     
+    for (int i = 1; i < 10; i++) {
+        if (a[i] > greatest) {
+            greatest = a[i];
+        }
+    }
+    
+    return greatest;
+}
+
+void findHighestTest() {
+    int a[10];
+    int greatest;
+
+    cout << "Enter ten values: ";
+    for (int i = 0; i < 10; i++) {
+        cin >> a[i];
+    }
+    
+    greatest = findHighest(a);
+
+    cout << "Greatest of ten numbers is " << greatest << endl;
+}
+
+int main() {
+    findHighestTest();
+    
+    return 0;
+}
+
+
+................................
+Program for reversing a string without using any built in functions.
+
+pseudofunction:
+
+function reverseString() 
+    start = 0
+    end = 0
+
+    while end != 0
+      end ++
+     end while
+     end --
+
+     while ( start < end )
+         temp = start
+         start = end
+         end = temp
+
+         start ++
+         end --
+end while
+ 
+function reverseStringTest(void)
+    input string
+    reverseString()
+    print reverse
+
+pseudocode:
+reverseStringTest()
+
+//code
+#include <iostream>
+using namespace std;
+
+void reverseString(char str[]){
+    int start = 0;
+    int end = 0;
+    
+    while(str[end] != 0){
+        end ++;
+    }
+    end --;
+    
+    while(start < end){
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+        
+        start ++;
+        end --;
+    }
+}
+
+void reverseStringTest(void){
+    char str[100];
+    cout << "Enter the string : ";
+    cin >> str;
+    
+    reverseString(str);
+    cout << "Reversed String : " << str;
+}
+
+int main(void){
+    reverseStringTest();
+    
+    return 0;
+}
+
+
+
+....................................
+
+Write a program that continuously prompts the user to enter a number. The program should add the entered number to the previous valid number if it is divisible by 3 or 5 and display the sum. If the number is not divisible by 3 or 5, display a message indicating this. The program should terminate when the user types any particular character. Additionally, handle invalid input by prompting the user to enter a valid number.
+
+cube
+//pseudofunctons:
+
+function findCube(int num) -> int
+    cube = num * num * num
+    return cube
+
+function findCubeTest(void)
+    input number
+    cube = findCube(int number)
+    print cube
+
+pseudocode:
+    findCubeTest
+
+
+//code
+
+#include <iostream>
+using namespace std;
+
+int findCube(int n){
+    int cube;   
+    cube = n * n * n;
+    return cube;
+}
+    
+void findCubeTest(void){
+    int number, cube;
+    cout << "Enter a number: ";
+    cin >> number;
+    cube = findCube(number);
+    cout << "cube of " << number << " is: " << cube;
+}
+
+int main(void){
+    findCubeTest();
+    return 0;
+} 
+
+divisibleByThree
+
+//pseudofunctions
+
+function isDivisibleBy3(int number) -> bool
+  if number % 3 == 0
+      return true
+  end if
+  return false
+
+function isDivisibleBy3Test()
+      input number
+      isDivisibleBy3(number);
+      if true
+          print is  divisible by 3
+      else
+          print is not divisible by 3
+  end
+
+pseudocode:
+    isDivisibleBy3Test()
+
+
+
+
+//code
+
+#include <iostream>
+using namespace std;
+
+bool isDivisibleBy3(int number) {
+    if (number % 3 == 0){
+      return true;
+    }
+    return false;
+}
+
+void isDivisibleBy3Test(void){
+  int number;
+  cout << "Enter a number: ";
+  cin >> number;
+  bool result = isDivisibleBy3(number);
+  if (result) {
+    cout << number << " is divisible by 3." << endl;
+  } else {
+    cout << number << " is not divisible by 3." << endl;
+  }
+}
+    
+
+int main() {
+  isDivisibleBy3Test();
+  return 0;
+}
+
+factorial
+
+pseudofunctions:
+
+function factorial(number-> int) -> int
+    if (number < 0)
+        return -1
+
+    int result = 1
+
+    for int i = 1...number              
+        result= (result * i)            
+    end for
+    
+    return result
+
+function factorialTest(void) -> void
+    input number
+    int result = factorial(number)
+
+    if (result == -1)
+        print("Invalid number")
+    else
+        print("Factorial is" result)
+
+pseudo code:
+
+factorialTest()
+
+
+//code
+    
+nNaturalNumbers
+
+//pseudocode
+
+pseudofunction:
+
+function printNaturalNumbers(n->int)->int
+    for i = 1..n
+        print i
+    End for
+
+function printNaturalNUmbersTest()
+    input n
+    printNaturalNumbers(n)
+
+pseudocode:
+
+printNaturalNUmbersTest()
+
+
+//code
+
+#include <iostream>
+using namespace std;
+
+void printNaturalNUmbers(int n)
+{
+    int i;
+    for(i=1;i<=n;i++){
+        cout << i << endl;
+    }
+}
+
+void printNaturalNUmbersTest()
+{
+    int number;
+    cout << "Enter number: ";
+    cin >> number;
+    
+    printNaturalNUmbers(number);
+   
+}
+
+int main()
+{
+    printNaturalNUmbersTest();
+    return 0;
+}
+
+prime
+
+
+pseudofunction:
+
+function isPrime(number -> int) -> bool
+	if (number < 2)
+		return false
+	end if
+
+	int squareRoot = sqrt(number)
+
+	for i in (2..squareRoot)
+		if (number % i) == 0
+			return false
+		end if
+	end for
+	
+	return true
+	
+function isPrimeTest(void) -> void
+	input number
+
+	if (isPrime(number))
+		print "Number is prime"
+	else
+		print "Number isn't prime"
+	end if
+
+pseudocode:
+isPrimeTest()
+
+
+//code
+
+#include<iostream>
+#include<cmath>
+using std::cout;
+using std::cin;
+
+bool isPrime(int number)
+{
+	if (number < 2){
+		return false;
+	}
+	
+	int squareRoot = (int)sqrt(number);
+
+	for (int i = 2; i <= squareRoot; i ++){
+		if ((number % i) == 0){
+			return false;
+		}
+	}
+	
+	return true;
+}
+	
+void isPrimeTest(void){
+    int number;
+    
+	cout << "Enter a number: ";
+	cin >> number;
+
+	if (isPrime(number)){
+		cout << number << " is prime";
+	}
+	else{
+		cout << number << " is not prime";
+	}
+}
+
+int main(void)
+{
+    isPrimeTest();
+    
+    return 0;
+}
+
+square
+
+
+//pseudofunctons:
+
+function findSquare(int num) -> int
+    square = num * num
+    return square
+
+function findSquareTest(void)
+    input number
+    square = findSquare(int number)
+    print square
+
+main
+    findSquareTest
+
+
+//code
+
+#include <iostream>
+using namespace std;
+
+int findSquare(int n){
+    int square;   
+    square = n * n;
+    return square;
+}
+    
+void findSquareTest(void){
+    int number, square;
+    cout << "Enter a number: ";
+    cin >> number;
+    square = findSquare(number);
+    cout << "Square of " << number << " is: " << square;
+}
+
+int main(){
+    findSquareTest();
+
+    return 0;
+} 
