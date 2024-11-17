@@ -1,2 +1,345 @@
-//
-a
+- Train Reservation System
+--Tables:
+    -- 1. Passenger Table
+    -- 2. Train Table
+    -- 3. Seat Table
+    -- 4. Food Table
+    -- 5. Booking Table
+    -- 6. Booking Food Table
+    -- 7. Booking Seat Table
+    
+--Creating tables
+    -- 1. Passenger Table
+create table passenger (
+   passenger_id   number primary key,
+   passenger_name varchar2(100) not null,
+   passenger_age  number not null
+);
+    -- 2. Train Table
+create table train (
+   train_id   number primary key,
+   train_name varchar2(100) not null,
+   route      varchar2(255) not null
+);
+    -- 3. Seat Table
+create table train_seat (
+   seat_id     number primary key,
+   seat_number varchar2(10) not null,
+   class       varchar2(50) not null,
+   seat_price  number not null
+);
+    -- 4. Food Table
+create table train_food (
+   item_id   number primary key,
+   item_name varchar2(100) not null,
+   price     number not null
+);
+    -- 5. Booking Table
+create table train_booking (
+   booking_id        number primary key,
+   booking_number    varchar2(20) not null,
+   journey_date      date not null,
+   train_id          number not null,
+   passenger_id      number not null,
+   number_of_tickets number not null,
+   ticket_amount     number not null,
+   food_amount       number not null,
+   total_amount      number not null,
+   payment_mode      varchar2(50) not null,
+   foreign key ( train_id )
+      references train ( train_id ),
+   foreign key ( passenger_id )
+      references passenger ( passenger_id )
+);
+    -- 6. Booking Food Table
+create table train_booking_food (
+   booking_id number not null,
+   item_id    number not null,
+   quantity   number not null,
+   amount     number not null,
+   primary key ( booking_id,
+                 item_id ),
+   foreign key ( booking_id )
+      references train_booking ( booking_id ),
+   foreign key ( item_id )
+      references train_food ( item_id )
+);
+    -- 7. Booking Seat Table
+create table train_booking_seat (
+   booking_id number not null,
+   seat_id    number not null,
+   price      number not null,
+   primary key ( booking_id, seat_id ),
+   foreign key ( booking_id )  references train_booking ( booking_id ),
+   foreign key ( seat_id ) references train_seat ( seat_id )
+);
+
+--Inserting Data to tables:
+    -- 1. Passenger Table
+insert into passenger values ( 1, 'Maheswaran',40 );
+insert into passenger values ( 2, 'Josh', 60 );
+insert into passenger values ( 3,   'Dhaheen', 80 );
+insert into passenger values ( 4,   'Pitchumani',   55 );
+insert into passenger values ( 5,   'Bhagya', 95 );
+insert into passenger values ( 6,   'Nayana',   82 );
+
+    -- 2. Train Table
+insert into train values ( 1,   'Rockfort Exp',   'Chennai-Trichy' );
+insert into train values ( 2,  'Pandian Exp',   'Chennai-Madurai' );
+insert into train values ( 3,   'Mangalore Exp',   'Chennai-Mangalore' );
+
+    -- 3. Seat Table
+insert into train_seat values ( 1,    'S1-01',    'Sleeper', 500 );
+insert into train_seat values ( 2,'S1-02','Sleeper',500 );
+insert into train_seat values ( 3, 'S1-03',   'Sleeper',    500 );
+insert into train_seat values ( 4,    'A1-01',    'AC',    1000 );
+insert into train_seat values ( 5,    'A1-02', 'AC', 1000 );
+insert into train_seat values ( 6,   'A1-03',    'AC',    1000 );
+insert into train_seat values ( 7,    'S2-01',    'Sleeper',    500 );
+insert into train_seat values ( 8,    'S2-02',    'Sleeper', 500 );
+insert into train_seat values ( 9,    'S2-03', 'Sleeper', 500 );
+
+    -- 4. Food Table
+insert into train_food values ( 1,    'Samosa',    60 );
+insert into train_food values ( 2,    'Coffee',    40 );
+insert into train_food values ( 3,    'Popcorn',    100 );
+insert into train_food values ( 4, 'Veg Meal',    150 );
+insert into train_food values ( 5,    'Non-Veg Meal', 200 );
+
+    -- 5. Booking Table
+insert into train_booking values ( 1,  'B001', to_date('2024-11-18','YYYY-MM-DD'), 1, 1, 3, 1500, 300,   1800, 'UPI' );
+insert into train_booking values ( 2,   'B002', to_date('2024-11-18','YYYY-MM-DD'), 2, 2, 2, 2000, 300, 2300, 'Card' );
+insert into train_booking values ( 3, 'B003', to_date('2024-11-18','YYYY-MM-DD'), 3, 3, 1, 1000,  200, 1200, 'Cash' );
+insert into train_booking values ( 4, 'B004', to_date('2024-11-19','YYYY-MM-DD'), 1, 4, 1,  500, 100, 600,   'UPI' );
+insert into train_booking values ( 5,   'B005',  to_date('2024-11-19','YYYY-MM-DD'),   2,  5,   2,   2000,   400,    2400,   'UPI' );
+insert into train_booking values ( 6, 'B006', to_date('2024-11-19','YYYY-MM-DD'), 3, 6, 1, 1000, 200,  1200, 'Card' );                               
+                                   
+    -- 6. Booking Food Table
+INSERT INTO train_booking_seat VALUES (1, 1, 500);
+INSERT INTO train_booking_seat VALUES (1, 2, 500);
+INSERT INTO train_booking_seat VALUES (1, 3, 500);
+INSERT INTO train_booking_seat VALUES (2, 4, 1000);
+INSERT INTO train_booking_seat VALUES (2, 5, 1000);
+INSERT INTO train_booking_seat VALUES (3, 6, 1000);
+
+    -- 7. Booking Seat Table
+INSERT INTO train_booking_food VALUES (1, 1, 2, 120);
+INSERT INTO train_booking_food VALUES (1, 2, 2, 80);
+INSERT INTO train_booking_food VALUES (2, 4, 2, 300);
+INSERT INTO train_booking_food VALUES (3, 3, 2, 200);
+
+--Queries
+
+    -- Update query
+        -- 1. Increase the price of all AC seats by 20%.
+        UPDATE train_seat
+        SET seat_price = seat_price * 1.2
+        WHERE class = 'AC';
+
+        -- 2. Update the total amount for all bookings to reflect a 5% discount.
+        UPDATE train_booking
+        SET total_amount = total_amount * 0.95;
+
+        -- 3. Change the name of the train "Rockfort Exp" to "Rockfort Express".
+        UPDATE train
+        SET train_name = 'Rockfort Express'
+        WHERE train_name = 'Rockfort Exp';
+
+        -- 4. Assign a NULL payment mode to all bookings where the amount exceeds ₹2000.
+        UPDATE train_booking
+        SET payment_mode = NULL
+        WHERE total_amount > 2000;
+
+        -- 5. Add ₹50 to the price of every food item costing less than ₹100.
+        UPDATE train_food
+        SET price = price + 50
+        WHERE price < 100;
+
+
+    -- Sub query
+        -- 1. Find the names of passengers who booked more than 2 tickets.
+        SELECT passenger_name
+        FROM passenger
+        WHERE passenger_id IN (
+            SELECT passenger_id
+            FROM train_booking
+            WHERE number_of_tickets > 2
+        );
+
+        -- 2. List all trains that have bookings with total amounts exceeding ₹2000.
+        SELECT train_name
+        FROM train
+        WHERE train_id IN (
+            SELECT train_id
+            FROM train_booking
+            WHERE total_amount > 2000
+        );
+
+        -- 3. Find the booking IDs where at least one AC seat was booked.
+        SELECT booking_id
+        FROM train_booking_seat
+        WHERE seat_id IN (
+            SELECT seat_id
+            FROM train_seat
+            WHERE class = 'AC'
+        );
+
+        -- 4. Identify the food items ordered in bookings for the train "Pandian Exp".
+        SELECT item_name
+        FROM train_food
+        WHERE item_id IN (
+            SELECT item_id
+            FROM train_booking_food
+            WHERE booking_id IN (
+                SELECT booking_id
+                FROM train_booking
+                WHERE train_id = (SELECT train_id FROM train WHERE train_name = 'Pandian Exp')
+            )
+        );
+
+        -- 5. Retrieve the passenger names who booked tickets for the "Sleeper" class.
+        SELECT passenger_name
+        FROM passenger
+        WHERE passenger_id IN (
+            SELECT passenger_id
+            FROM train_booking
+            WHERE booking_id IN (
+                SELECT booking_id
+                FROM train_booking_seat
+                WHERE seat_id IN (
+                    SELECT seat_id
+                    FROM train_seat
+                    WHERE class = 'Sleeper'
+                )
+            )
+        );
+
+
+    -- Correlated query 
+        -- 1. Find the bookings where the ticket amount exceeds the combined price of the seats booked.
+        SELECT b.booking_id, b.ticket_amount
+        FROM train_booking b
+        WHERE b.ticket_amount > (
+            SELECT SUM(ts.seat_price)
+            FROM train_booking_seat tbs
+            JOIN train_seat ts ON tbs.seat_id = ts.seat_id
+            WHERE tbs.booking_id = b.booking_id
+        );
+
+        -- 2. List passenger names who have ordered food costing more than ₹200 in total.
+        SELECT p.passenger_name
+        FROM passenger p
+        WHERE EXISTS (
+            SELECT 1
+            FROM train_booking_food bf
+            JOIN train_booking b ON bf.booking_id = b.booking_id
+            WHERE b.passenger_id = p.passenger_id AND bf.amount > 200
+        );
+
+        -- 3. Identify bookings where the number of tickets is greater than the number of seats booked.
+        SELECT b.booking_id, b.number_of_tickets
+        FROM train_booking b
+        WHERE b.number_of_tickets > (
+            SELECT COUNT(*)
+            FROM train_booking_seat
+            WHERE booking_id = b.booking_id
+        );
+
+        -- 4. Retrieve all trains where the average seat price is greater than ₹800.
+        SELECT t.train_name
+        FROM train t
+        WHERE (
+            SELECT AVG(ts.seat_price)
+            FROM train_seat ts
+            WHERE ts.seat_id IN (
+                SELECT seat_id
+                FROM train_booking_seat
+                WHERE booking_id IN (
+                    SELECT booking_id
+                    FROM train_booking
+                    WHERE train_id = t.train_id
+                )
+            )
+        ) > 800;
+
+        -- 5. List passengers who booked tickets but did not order any food.
+        SELECT p.passenger_name
+        FROM passenger p
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM train_booking_food bf
+            WHERE bf.booking_id IN (
+                SELECT booking_id
+                FROM train_booking
+                WHERE passenger_id = p.passenger_id
+            )
+        );
+
+
+
+    -- Join query
+        
+        -- 1. List all passengers, their train names, and the total amounts they paid.
+        SELECT p.passenger_name, t.train_name, b.total_amount
+        FROM train_booking b
+        JOIN passenger p ON b.passenger_id = p.passenger_id
+        JOIN train t ON b.train_id = t.train_id;
+
+        -- 2. Find the seat numbers booked by "Maheswaran".
+        SELECT ts.seat_number
+        FROM passenger p
+        JOIN train_booking b ON p.passenger_id = b.passenger_id
+        JOIN train_booking_seat tbs ON b.booking_id = tbs.booking_id
+        JOIN train_seat ts ON tbs.seat_id = ts.seat_id
+        WHERE p.passenger_name = 'Maheswaran';
+
+        -- 3. Retrieve all food items ordered for the train "Mangalore Exp".
+        SELECT tf.item_name, bf.quantity, bf.amount
+        FROM train_food tf
+        JOIN train_booking_food bf ON tf.item_id = bf.item_id
+        JOIN train_booking b ON bf.booking_id = b.booking_id
+        JOIN train t ON b.train_id = t.train_id
+        WHERE t.train_name = 'Mangalore Exp';
+
+        -- 4. Get the total ticket amount collected for each train.
+        SELECT t.train_name, SUM(b.ticket_amount) AS total_ticket_amount
+        FROM train t
+        JOIN train_booking b ON t.train_id = b.train_id
+        GROUP BY t.train_name;
+
+        -- 5. List passengers who booked tickets in the AC class.
+        SELECT DISTINCT p.passenger_name
+        FROM passenger p
+        JOIN train_booking b ON p.passenger_id = b.passenger_id
+        JOIN train_booking_seat tbs ON b.booking_id = tbs.booking_id
+        JOIN train_seat ts ON tbs.seat_id = ts.seat_id
+        WHERE ts.class = 'AC';
+
+        
+    -- Delete query
+
+        -- 1. Delete all bookings made for the train "Pandian Exp".
+        DELETE FROM train_booking
+        WHERE train_id = (SELECT train_id FROM train WHERE train_name = 'Pandian Exp');
+
+        -- 2. Remove all food orders where the item name is "Popcorn".
+        DELETE FROM train_booking_food
+        WHERE item_id = (SELECT item_id FROM train_food WHERE item_name = 'Popcorn');
+
+        -- 3. Delete all seat records where the price is less than ₹500.
+        DELETE FROM train_seat
+        WHERE seat_price < 500;
+
+        -- 4. Remove all bookings where no food was ordered.
+        DELETE FROM train_booking
+        WHERE booking_id NOT IN (
+            SELECT DISTINCT booking_id
+            FROM train_booking_food
+        );
+
+        -- 5. Delete all train records where no bookings have been made.
+        DELETE FROM train
+        WHERE train_id NOT IN (
+            SELECT DISTINCT train_id
+            FROM train_booking
+        );
