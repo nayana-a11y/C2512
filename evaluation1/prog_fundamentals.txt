@@ -86,7 +86,7 @@ int main(void){
         cin >> number;
 
         result = calculateCube(number);
-        cout << "The cube of the number is: "<< result << endl;
+        cout << "The cube of the number is: "<< result ;
     }
 
     int main(void)
@@ -918,7 +918,6 @@ int factorial(int number) {
         return -1; 
     }
 
-    int result = 1;
 
     for (int i = 1; i <= number; i++) {
         result *= i;
@@ -1922,8 +1921,7 @@ int main() {
  
     function findAvg(ages-> [int], size-> int) -> int
 
-        int avg = findSumOfAge(ages, size)  //review
-
+        int avg = findSumOfAge(ages, size)  
         return ((int) avg / 2)
 
     function isPrime(age-> int) -> bool
@@ -1994,7 +1992,7 @@ int main() {
         return sum
 
     function findMinAge(ages-> [int], size-> int) -> int
-        min = 0
+        min = INT_MAX
 
         for i in (0..(size-1))
             if (ages[i] < min)
@@ -2266,16 +2264,14 @@ function avgAgeAndMinAge(numAge -> int) -> void
     for i from 0 to (numAge - 1)
         input age
 
-        // Update the running sum
         totalAge = totalAge + age
 
-        // Update the minimum age
         if age < minAge
             minAge = age
         end if
     end for
 
-    avgAge = totalAge / numAge // Corrected variable name from 'n' to 'numAge'
+    avgAge = totalAge / numAge 
 
     print "Minimum Age: " minAge
     print "Average Age: " avgAge
@@ -2317,7 +2313,7 @@ void avgAgeAndMinAge(int numAge) {
         }
     }
 
-    double avgAge = static_cast<double>(totalAge) / numAge;
+    int avgAge = (totalAge / numAge);
 
     cout << "Minimum Age: " << minAge << endl;
     cout << "Average Age: " << avgAge << endl;
