@@ -879,6 +879,60 @@ int main(void)
     }
 
 15. Reverse the number.  
+    pseudofunctions:
+    function reverseInteger(num -> int) -> int
+        reversed = 0
+
+        while num != 0
+            digit = num % 10           
+            reversed = reversed * 10 + digit 
+            num = num / 10             
+        end while
+
+        return reversed
+
+    function reverseIntegerTest(void) -> void
+        print "Enter an integer:"
+        input num
+
+        reversedNum = call reverseInteger(num)
+
+        print "Reversed Integer: " reversedNum
+
+    pseudocode:
+        reverseIntegerTest(void)
+
+    c++:
+   #include <iostream>
+    using namespace std;
+
+    int reverseInteger(int num) {
+        int reversed = 0;
+
+        while (num != 0) {
+            int digit = num % 10;            
+            reversed = reversed * 10 + digit; 
+            num /= 10;                       
+        }
+
+        return reversed;
+    }
+
+    void reverseIntegerTest() {
+        cout << "Enter an integer: ";
+        int num;
+        cin >> num;
+
+        int reversedNum = reverseInteger(num);
+
+        cout << "Reversed Integer: " << reversedNum << endl;
+    }
+
+    int main() {
+        reverseIntegerTest();
+        return 0;
+    }
+
 
 16. Factorials of the number. [Josh]
 
@@ -1921,8 +1975,10 @@ int main() {
  
     function findAvg(ages-> [int], size-> int) -> int
 
-        int avg = findSumOfAge(ages, size)  
-        return ((int) avg / 2)
+        sumAge = findSumOfAge(ages, size)
+        avg = sumAge / size
+
+	return avg
 
     function isPrime(age-> int) -> bool
         if (age < 2)
