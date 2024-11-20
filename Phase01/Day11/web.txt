@@ -1,0 +1,87 @@
+Trainer Search App 
+    - CRUD opeartions on trainer {id, name, technology, location, phone_number}
+
+    - MERN Stack [3 tier architecture]          JavaScript App Development Stack
+        - Mongo as data source                      | Database server     - Database Layer       : Data 
+        - express JS based backend Application      | Backend Application - Application Layer    : Business Logics 
+            API (Web Services - HTTP Based) Provider 
+
+            ODM - Object Document Mapper            |                      - ODM Layer           : 
+        - react JS based frontend Application       | Frontend Application - Presentation Layer  : UI
+            API Consumer 
+
+Benefits of web applications
+    1. After application development 
+        we can deploy into production site server
+        or 
+        we can deploy into servers 
+            like  
+                dedicated server (purchased - on-site-premise)
+                OR 
+                shared server (virtual server) (purchased)
+                OR 
+                cloud like 
+                    Google Cloud 
+                    Azure Cloud 
+                    Amazon Clound 
+
+        No need to install the client in every computer for usage. 
+
+        Reason: Thin Client 
+    2. Development can be done in many technologies 
+    3. Microservices application architecture development also we can do 
+
+    Web Designers 
+    Frontend Developers 
+    Backend Developers 
+    Database Programmers 
+
+==============================================================
+Stack: Desktop App              <=== Thick Client (Old School)          2-tier 
+    Java+Swing | Oracle         
+    - UI           - Data 
+    - Business 
+      Logic 
+
+Stack: Web App                  <==== Thin Client   (Old School)        2.5-tier 
+    Java+Spring | Oracle 
+    - UI            - Data 
+    - Business 
+      Logic 
+    ===========================
+    Java+Spring 
+    Python Django 
+    Python Flask 
+    JavaScript Express 
+    C# ASP.NET MVC 
+
+
+Stack: Web App (Web application, Business Application)   (Old School) === 3-tier 
+    Java+Spring  | Java+EJB   | Oracle 
+    - UI            -Business     -Data 
+                     Logic     
+
+    Client          Application     Database 
+    Web Server      Server          Server 
+
+
+Full Stack: (Modern School)                                            === 3-tier 
+                    (Service 
+                    Oriented)
+    Frontend        Backend         Database 
+    -UI               
+    (Presentation)  (Business)      (Data)
+
+    Angular         Express JS          Oracle        
+    React           Python Django       Postgress 
+    Vue JS          Python Flask        Mongo 
+    Android         C# ASP.NET Web API  etc 
+    ios             C++ 
+    Widnows Desktop Java Spring 
+    Ubuntu Desktop 
+==============================================================
+HTML : content 
+CSS : beautician - look and feel of the content 
+Bootstrap : CSS Framework - stylst - readymade styles - just use it 
+JavaScript : Interactivity within the page (dynamic at client side)
+             validation, animation etc 
