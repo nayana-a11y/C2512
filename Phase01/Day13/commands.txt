@@ -1,0 +1,80 @@
+To disply working folder:
+    $ pwd
+To display contents of the current directory:
+    $ ls
+To change to directory "phase1":
+    $ cd phase1
+To create directory "Day13" in the current dir:
+    $ mkdir Day13
+To delete empty directory "Day13" in the current dir:
+    $ rmdir Day13
+To query version of c compiler:
+    $ gcc --version
+To query version of c++ compiler:
+    $ g++ --version
+To query version of gdb (c/c++ debugger):
+    $ gdb --version
+To query version of make (c/c++ build tool):
+    $ make --version
+    To create file and type inside file 
+        to go to nano editor 
+    To open editor to create and edit file named "hello_world.cpp":
+$ nano hello_world.cpp
+    -- inside the nano editor 
+    #include <iostream>
+    #include <cstdlib>
+    using std::cout;
+    using std::endl;
+
+    int main() {
+            cout << "Hello World!!!" << endl;
+
+            return EXIT_SUCCESS;
+    }
+
+    ^X 
+    Accepted To Save [Enter]
+    :hello_world.cpp [Enter]
+    -- gettting out of the "nano" editor
+
+To display the content of the file "hello_world.cpp": 
+    $ cat hello_world.cpp
+
+To compile the program in the file "hello_world.cpp":
+    $ g++ hello_world.cpp 
+
+    -- a.out file is created. this is executable file also. 
+
+To run the output of (after compilation) our program in the file "hello_world.cpp":
+    $ ./a.out 
+    -- we got output the program in the file "hello_world.cpp".
+
+To clear the terminal: 
+    $ clear 
+
+    -- contents of the terminal is cleared, we have empty (content) terminal.
+
+To move file "hello_world.cpp" into dir "cpp":
+    $mv hello_world.cpp cpp 
+
+To copy file "hello_world.cpp" as "hello_name.cpp":
+    $cp hello_world.cpp hello_name.cpp
+
+To (detailed) list the current dir:
+    $ ls -l 
+    -- we can see when a.out is changed.
+
+To open the "hello_student.cpp" in vim editor:
+    $ vim hello_student.cpp 
+
+    -- modes, navigations, selections, copy, paste, indent, save, exit 
+To display first 15 lines of program in "hello_student.cpp" 
+    $ cat -n hello_student.cpp | head -n 15
+
+To dispaly after 15th line from the program in "hello_student.cpp":
+    --assume total lines are 40
+    $ cat -n hello_student.cpp | tail -n 25
+ 
+To dispaly between lines 16 and 23 from the program in "hello_student.cpp":
+    --assume total lines are 40. 
+    $ cat -n hello_student.cpp | tail -n 25 | head -n 8
