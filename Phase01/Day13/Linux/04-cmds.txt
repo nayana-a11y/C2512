@@ -1,0 +1,399 @@
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ls
+a.out  hello_name.cpp  hello_student.cpp  hello_world.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cp hello_student.cpp hello_2students.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# nano hello_2students.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students.cpp
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+        int id1;
+        char name1[255];
+
+        int id2;
+        char name2[255];
+
+        cout << "Enter first student details." << endl;
+        cout << "Enter id:";
+        cin >> id1;
+        cout << "Enter name:";
+        cin >> name1;
+
+        cout << "Enter second student details." << endl;
+        cout << "Enter id:";
+        cin >> id2;
+        cout << "Enter name:";
+        cin >> name2;
+
+        cout << "Hello " << name1 << " of id " << id1 << "!!!" << endl;
+        cout << "Hello " << name2 << " of id " << id2 << "!!!" << endl;
+
+        return EXIT_SUCCESS;
+}
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# g++ hello_2students.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ls -l
+total 21
+-rwxrwxrwx 1 root root 16880 Nov 22 12:34 a.out
+-rwxrwxrwx 1 root root   566 Nov 22 12:34 hello_2students.cpp
+-rwxrwxrwx 1 root root   228 Nov 22 12:04 hello_name.cpp
+-rwxrwxrwx 1 root root   291 Nov 22 12:12 hello_student.cpp
+-rwxrwxrwx 1 root root   147 Nov 22 10:49 hello_world.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ./a.out
+Enter first student details.
+Enter id:1001
+Enter name:Ayisha
+Enter second student details.
+Enter id:1002
+Enter name:Athira
+Hello Ayisha of id 1001!!!
+Hello Athira of id 1002!!!
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ./a.out
+Enter first student details.
+Enter id:1003
+Enter name:Vishak
+Enter second student details.
+Enter id:1004
+Enter name:Vinayak
+Hello Vishak of id 1003!!!
+Hello Vinayak of id 1004!!!
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cp hello_2students.cpp hello_2students_v2.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# nano hello_2students_v2.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+void student_read(int& id, char name[]);
+void student_print(int& id, char name[])
+
+int main() {
+        int id1;
+        char name1[255];
+
+        int id2;
+        char name2[255];
+
+        cout << "Enter first student details." << endl;  student_read(id1, name1);
+        cout << "Enter second student details." << endl;  student_read(id2, name2);
+
+        student_print(id1, name1);
+        student_print(id2, name2);
+
+        return EXIT_SUCCESS;
+}
+
+void student_read(int& id, char name[]) {
+        cout << "Enter id:";
+        cin >> id;
+        cout << "Enter name:";
+        cin >> name;
+}
+
+void student_print(int& id, char name[]) {
+        cout << "Hello " << name << " of id " << id << "!!!" << endl;
+}
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat -10 hello_2students_v2.cpp
+cat: invalid option -- '1'
+Try 'cat --help' for more information.
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp -10
+cat: invalid option -- '1'
+Try 'cat --help' for more information.
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp --10
+cat: unrecognized option '--10'
+Try 'cat --help' for more information.
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp -n10
+cat: invalid option -- '1'
+Try 'cat --help' for more information.
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp -n 10
+     1  #include <iostream>
+     2  #include <cstdlib>
+     3  using std::cout;
+     4  using std::cin;
+     5  using std::endl;
+     6
+     7  void student_read(int& id, char name[]);
+     8  void student_print(int& id, char name[])
+     9
+    10  int main() {
+    11          int id1;
+    12          char name1[255];
+    13
+    14          int id2;
+    15          char name2[255];
+    16
+    17          cout << "Enter first student details." << endl;  student_read(id1, name1);
+    18          cout << "Enter second student details." << endl;  student_read(id2, name2);
+    19
+    20          student_print(id1, name1);
+    21          student_print(id2, name2);
+    22
+    23          return EXIT_SUCCESS;
+    24  }
+    25
+    26  void student_read(int& id, char name[]) {
+    27          cout << "Enter id:";
+    28          cin >> id;
+    29          cout << "Enter name:";
+    30          cin >> name;
+    31  }
+    32
+    33  void student_print(int& id, char name[]) {
+    34          cout << "Hello " << name << " of id " << id << "!!!" << endl;
+    35  }
+cat: 10: No such file or directory
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp -n 10p
+     1  #include <iostream>
+     2  #include <cstdlib>
+     3  using std::cout;
+     4  using std::cin;
+     5  using std::endl;
+     6
+     7  void student_read(int& id, char name[]);
+     8  void student_print(int& id, char name[])
+     9
+    10  int main() {
+    11          int id1;
+    12          char name1[255];
+    13
+    14          int id2;
+    15          char name2[255];
+    16
+    17          cout << "Enter first student details." << endl;  student_read(id1, name1);
+    18          cout << "Enter second student details." << endl;  student_read(id2, name2);
+    19
+    20          student_print(id1, name1);
+    21          student_print(id2, name2);
+    22
+    23          return EXIT_SUCCESS;
+    24  }
+    25
+    26  void student_read(int& id, char name[]) {
+    27          cout << "Enter id:";
+    28          cin >> id;
+    29          cout << "Enter name:";
+    30          cin >> name;
+    31  }
+    32
+    33  void student_print(int& id, char name[]) {
+    34          cout << "Hello " << name << " of id " << id << "!!!" << endl;
+    35  }
+cat: 10p: No such file or directory
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat -n 10 hello_2students_v2.cpp
+cat: 10: No such file or directory
+     1  #include <iostream>
+     2  #include <cstdlib>
+     3  using std::cout;
+     4  using std::cin;
+     5  using std::endl;
+     6
+     7  void student_read(int& id, char name[]);
+     8  void student_print(int& id, char name[])
+     9
+    10  int main() {
+    11          int id1;
+    12          char name1[255];
+    13
+    14          int id2;
+    15          char name2[255];
+    16
+    17          cout << "Enter first student details." << endl;  student_read(id1, name1);
+    18          cout << "Enter second student details." << endl;  student_read(id2, name2);
+    19
+    20          student_print(id1, name1);
+    21          student_print(id2, name2);
+    22
+    23          return EXIT_SUCCESS;
+    24  }
+    25
+    26  void student_read(int& id, char name[]) {
+    27          cout << "Enter id:";
+    28          cin >> id;
+    29          cout << "Enter name:";
+    30          cin >> name;
+    31  }
+    32
+    33  void student_print(int& id, char name[]) {
+    34          cout << "Hello " << name << " of id " << id << "!!!" << endl;
+    35  }
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat -n -e 1,10 hello_2students_v2.cpp
+cat: 1,10: No such file or directory
+     1  #include <iostream>$
+     2  #include <cstdlib>$
+     3  using std::cout;$
+     4  using std::cin;$
+     5  using std::endl;$
+     6  $
+     7  void student_read(int& id, char name[]);$
+     8  void student_print(int& id, char name[])$
+     9  $
+    10  int main() {$
+    11          int id1;$
+    12          char name1[255];$
+    13  $
+    14          int id2;$
+    15          char name2[255];$
+    16  $
+    17          cout << "Enter first student details." << endl;  student_read(id1, name1);$
+    18          cout << "Enter second student details." << endl;  student_read(id2, name2);$
+    19  $
+    20          student_print(id1, name1); $
+    21          student_print(id2, name2);$
+    22  $
+    23          return EXIT_SUCCESS;$
+    24  }$
+    25  $
+    26  void student_read(int& id, char name[]) {$
+    27          cout << "Enter id:";$
+    28          cin >> id;$
+    29          cout << "Enter name:";$
+    30          cin >> name;$
+    31  }$
+    32  $
+    33  void student_print(int& id, char name[]) {$
+    34          cout << "Hello " << name << " of id " << id << "!!!" << endl;$
+    35  }$
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp | head 10
+head: cannot open '10' for reading: No such file or directory
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp | head
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+void student_read(int& id, char name[]);
+void student_print(int& id, char name[])
+
+int main() {
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp | head -n 10
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+void student_read(int& id, char name[]);
+void student_print(int& id, char name[])
+
+int main() {
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp | head  11,
+head: cannot open '11,' for reading: No such file or directory
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp | head  11..
+head: cannot open '11..' for reading: No such file or directory
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp | head  11
+head: cannot open '11' for reading: No such file or directory
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp | head -1-
+head: invalid trailing option -- -
+Try 'head --help' for more information.
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp | head -10
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+void student_read(int& id, char name[]);
+void student_print(int& id, char name[])
+
+int main() {
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+void student_read(int& id, char name[]);
+void student_print(int& id, char name[])
+
+int main() {
+        int id1;
+        char name1[255];
+
+        int id2;
+        char name2[255];
+
+        cout << "Enter first student details." << endl;  student_read(id1, name1);
+        cout << "Enter second student details." << endl;  student_read(id2, name2);
+
+        student_print(id1, name1);
+        student_print(id2, name2);
+
+        return EXIT_SUCCESS;
+}
+
+void student_read(int& id, char name[]) {
+        cout << "Enter id:";
+        cin >> id;
+        cout << "Enter name:";
+        cin >> name;
+}
+
+void student_print(int& id, char name[]) {
+        cout << "Hello " << name << " of id " << id << "!!!" << endl;
+}
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# g++ hello_2students_v2.cpp
+hello_2students_v2.cpp:10:1: error: expected initializer before ‘int’
+   10 | int main() {
+      | ^~~
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# nano hello_2students_v2.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_v2.cpp
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+void student_read(int& id, char name[]);
+void student_print(int& id, char name[]);
+
+int main() {
+        int id1;
+        char name1[255];
+
+        int id2;
+        char name2[255];
+
+        cout << "Enter first student details." << endl;  student_read(id1, name1);
+        cout << "Enter second student details." << endl;  student_read(id2, name2);
+
+        student_print(id1, name1);
+        student_print(id2, name2);
+
+        return EXIT_SUCCESS;
+}
+
+void student_read(int& id, char name[]) {
+        cout << "Enter id:";
+        cin >> id;
+        cout << "Enter name:";
+        cin >> name;
+}
+
+void student_print(int& id, char name[]) {
+        cout << "Hello " << name << " of id " << id << "!!!" << endl;
+}
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# g++ hello_2students_v2.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ls -l
+total 25
+-rwxrwxrwx 1 root root 16976 Nov 22 12:53 a.out
+-rwxrwxrwx 1 root root   566 Nov 22 12:34 hello_2students.cpp
+-rwxrwxrwx 1 root root   707 Nov 22 12:53 hello_2students_v2.cpp
+-rwxrwxrwx 1 root root   228 Nov 22 12:04 hello_name.cpp
+-rwxrwxrwx 1 root root   291 Nov 22 12:12 hello_student.cpp
+-rwxrwxrwx 1 root root   147 Nov 22 10:49 hello_world.cpp
+
+
+Enter first student details.
+Enter id:1001
+Enter name:Ayisha
+Enter second student details.
+Enter id:1002
+Enter name:Athira
+Hello Ayisha of id 1001!!!
+Hello Athira of id 1002!!!
