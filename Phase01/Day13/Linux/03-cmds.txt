@@ -1,0 +1,39 @@
+// ls
+a.out  hello_name.cpp  hello_world.cpp
+// cp hello_name.cpp hello_student.cpp
+// ls
+a.out  hello_name.cpp  hello_student.cpp  hello_world.cpp
+// nano hello_student.cpp
+// cat hello_student.cpp
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+        int id;
+        char name[255];
+
+        cout << "Enter id:";
+        cin >> id;
+        cout << "Enter name:";
+        cin >> name;
+
+        cout << "Hello " << name << " of id " << id << "!!!" << endl;
+
+        return EXIT_SUCCESS;
+}
+//  g++ hello_student.cpp
+// ls
+a.out  hello_name.cpp  hello_student.cpp  hello_world.cpp
+// ls -l
+total 20
+-rwxrwxrwx 1 root root 16880 Nov 22 12:14 a.out
+-rwxrwxrwx 1 root root   228 Nov 22 12:04 hello_name.cpp
+-rwxrwxrwx 1 root root   291 Nov 22 12:12 hello_student.cpp
+-rwxrwxrwx 1 root root   147 Nov 22 10:49 hello_world.cpp
+//   ./a.out
+Enter id:1001
+Enter name:Ayisha
+Hello Ayisha of id 1001!!!
