@@ -1,0 +1,219 @@
+// cp hello_2students_oops.cpp hello_2students_oops_v2.cpp
+
+// vim hello_2students_oops_v2.cpp
+// cat -n hello_2students_oops_v2.cpp
+     1  #include <iostream>
+     2  #include <cstdlib>
+     3
+     4  using std::cout;
+     5  using std::cin;
+     6  using std::endl;
+     7
+     8  struct Student {
+     9          int id;
+    10          char name[255];
+    11  };
+    12
+    13  void student_read(Student& student);
+    14  void student_print(Student& student);
+    15
+    16  int main() {
+    17          Student student1;
+    18          Student student2;
+    19
+    20          cout << "Enter first student details." << endl; student_read(student1);
+    21          cout << "Enter second student details." << endl; student_read(student2);
+    22
+    23          student_print(student1);
+    24          student_print(student2);
+    25
+    26          return EXIT_SUCCESS;
+    27  }
+    28
+    29  void student_read(Student& student) {
+    30          cout << "Enter id:";
+    31          cin >> student.id;
+    32          cout << "Enter name:";
+    33          cin >> student.name;
+    34  }
+    35
+    36  void student_print(Student& student) {
+    37          cout << "Hello " << student.name << " of id " << student.id << "!!!" << endl;
+    38  }
+    39
+    40
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat -n hello_2students_oops_v2.cpp | head -n 15
+     1  #include <iostream>
+     2  #include <cstdlib>
+     3
+     4  using std::cout;
+     5  using std::cin;
+     6  using std::endl;
+     7
+     8  struct Student {
+     9          int id;
+    10          char name[255];
+    11  };
+    12
+    13  void student_read(Student& student);
+    14  void student_print(Student& student);
+    15
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat -n hello_2students_oops_v2.cpp | tail -n 23
+    18          Student student2;
+    19
+    20          cout << "Enter first student details." << endl; student_read(student1);
+    21          cout << "Enter second student details." << endl; student_read(student2);
+    22
+    23          student_print(student1);
+    24          student_print(student2);
+    25
+    26          return EXIT_SUCCESS;
+    27  }
+    28
+    29  void student_read(Student& student) {
+    30          cout << "Enter id:";
+    31          cin >> student.id;
+    32          cout << "Enter name:";
+    33          cin >> student.name;
+    34  }
+    35
+    36  void student_print(Student& student) {
+    37          cout << "Hello " << student.name << " of id " << student.id << "!!!" << endl;
+    38  }
+    39
+    40
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat -n hello_2students_oops_v2.cpp | tail -n 25
+    16  int main() {
+    17          Student student1;
+    18          Student student2;
+    19
+    20          cout << "Enter first student details." << endl; student_read(student1);
+    21          cout << "Enter second student details." << endl; student_read(student2);
+    22
+    23          student_print(student1);
+    24          student_print(student2);
+    25
+    26          return EXIT_SUCCESS;
+    27  }
+    28
+    29  void student_read(Student& student) {
+    30          cout << "Enter id:";
+    31          cin >> student.id;
+    32          cout << "Enter name:";
+    33          cin >> student.name;
+    34  }
+    35
+    36  void student_print(Student& student) {
+    37          cout << "Hello " << student.name << " of id " << student.id << "!!!" << endl;
+    38  }
+    39
+    40
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat -n hello_2students_oops_v2.cpp | tail -n 25 | head -n 11
+    16  int main() {
+    17          Student student1;
+    18          Student student2;
+    19
+    20          cout << "Enter first student details." << endl; student_read(student1);
+    21          cout << "Enter second student details." << endl; student_read(student2);
+    22
+    23          student_print(student1);
+    24          student_print(student2);
+    25
+    26          return EXIT_SUCCESS;
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat -n hello_2students_oops_v2.cpp | tail -n 25 | head -n 12
+    16  int main() {
+    17          Student student1;
+    18          Student student2;
+    19
+    20          cout << "Enter first student details." << endl; student_read(student1);
+    21          cout << "Enter second student details." << endl; student_read(student2);
+    22
+    23          student_print(student1);
+    24          student_print(student2);
+    25
+    26          return EXIT_SUCCESS;
+    27  }
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# g++ hello_2students_oops_v2.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ./a.out
+Enter first student details.
+Enter id:1001
+Enter name:Ayisha
+Enter second student details.
+Enter id:1002
+Enter name:Athira
+Hello Ayisha of id 1001!!!
+Hello Athira of id 1002!!!
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# vim hello_2students_oops_v2.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# g++ hello_2students_oops_v2.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ./a.out
+Enter first student details.
+Enter id:1001
+Enter name:Ayisha
+Enter second student details.
+Enter id:1002
+Enter name:Athira
+Hello sU of id -678120839!!!
+Hello  of id 0!!!
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_oops_v2.cpp
+#include <iostream>
+#include <cstdlib>
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+struct Student {
+        int id;
+        char name[255];
+};
+
+void student_read(Student student);
+void student_print(Student student);
+
+int main() {
+        Student student1;
+        Student student2;
+
+        cout << "Enter first student details." << endl; student_read(student1);
+        cout << "Enter second student details." << endl; student_read(student2);
+
+        student_print(student1);
+        student_print(student2);
+
+        return EXIT_SUCCESS;
+}
+
+void student_read(Student student) {
+        cout << "Enter id:";
+        cin >> student.id;
+        cout << "Enter name:";
+        cin >> student.name;
+}
+
+void student_print(Student student) {
+        cout << "Hello " << student.name << " of id " << student.id << "!!!" << endl;
+}
+
+
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# vim hello_2students_oops_v2.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# g++ hello_2students_oops_v2.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ./a.out
+Enter first student details.
+Enter id:1001
+Enter name:Ayisha
+Enter second student details.
+Enter id:1002
+Enter name:Athira
+Hello  of id 0!!!
+Hello  of id 0!!!
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# vim hello_2students_oops_v2.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# g++ hello_2students_oops_v2.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ./a.out
+Enter first student details.
+Enter id:1001
+Enter name:Ayisha
+Enter second student details.
+Enter id:1002
+Enter name:Athira
+Hello Ayisha of id 1001!!!
+Hello Athira of id 1002!!!
