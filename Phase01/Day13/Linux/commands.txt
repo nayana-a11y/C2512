@@ -52,8 +52,6 @@ To run the output of (after compilation) our program in the file "hello_world.cp
 To clear the terminal: 
     $ clear 
 
-    -- contents of the terminal is cleared, we have empty (content) terminal.
-
 To move file "hello_world.cpp" into dir "cpp":
     $mv hello_world.cpp cpp 
 
