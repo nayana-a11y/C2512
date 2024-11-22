@@ -1,0 +1,66 @@
+
+// cp hello_2students_oops_v2.cpp hello_students_oops.cpp
+// vim hello_students_oops.cpp
+// vim hello_students.cpp
+// vim hello_students_oops.cpp
+// cat -n hello_students_oops.cpp
+
+     1  #include <iostream>
+     2  #include <cstdlib>
+     3
+     4  using std::cout;
+     5  using std::cin;
+     6  using std::endl;
+     7
+     8  struct Student {
+     9          int id;
+    10          char name[255];
+    11  };
+    12
+    13  void student_read(Student& student);
+    14  void student_print(Student& student);
+    15
+    16  int main() {
+    17
+    18          int N;
+    19          cout << "Number of Students:"; cin >> N;
+    20
+    21
+    22          Student students[N] {};
+    23
+    24          for(int I = 0; I < N; I++) {
+    25                  cout << "Enter " << (I+1) << " th student details." << endl;  student_read(students[I]);
+    26          }
+    27
+    28          for(int I = 0; I < N; I++) {
+    29                  student_print(students[I]);
+    30          }
+    31
+    32          return EXIT_SUCCESS;
+    33  }
+    34
+    35  void student_read(Student& student) {
+    36          cout << "Enter id:";
+    37          cin >> student.id;
+    38          cout << "Enter name:";
+    39          cin >> student.name;
+    40  }
+    41
+    42  void student_print(Student& student) {
+    43          cout << "Hello " << student.name << " of id " << student.id << "!!!" << endl;
+    44  }
+    45
+
+Number of Students:3
+Enter 1 th student details.
+Enter id:1001
+Enter name:Ayisha
+Enter 2 th student details.
+Enter id:1002
+Enter name:Athira
+Enter 3 th student details.
+Enter id:1003
+Enter name:Venkatesh
+Hello Ayisha of id 1001!!!
+Hello Athira of id 1002!!!
+Hello Venkatesh of id 1003!!!
