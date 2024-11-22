@@ -1,0 +1,68 @@
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512# pwd
+/mnt/c/mywork/source/c2512
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512# ls
+README.md  docs  evaluations  lab  notes  phase1
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512# cd phase1
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1# ls
+learnings
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1# cd learnings/
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings# ls
+Day01  Day02  Day03  Day04  Day05  Day06  Day07  Day08  Day09  Day11  Day12  emp_app_query-1.sql
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings# mkdir Day13
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings# ls
+Day01  Day02  Day03  Day04  Day05  Day06  Day07  Day08  Day09  Day11  Day12  Day13  emp_app_query-1.sql
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings# rmdir Day13
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings# ls
+Day01  Day02  Day03  Day04  Day05  Day06  Day07  Day08  Day09  Day11  Day12  emp_app_query-1.sql
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings# mkdir Day13
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings# ls
+Day01  Day02  Day03  Day04  Day05  Day06  Day07  Day08  Day09  Day11  Day12  Day13  emp_app_query-1.sql
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings# cd Day13
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# gcc --version
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# g++ --version
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# gdb --version
+GNU gdb (Ubuntu 12.1-0ubuntu1~22.04.2) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# make --version
+GNU Make 4.3
+Built for x86_64-pc-linux-gnu
+Copyright (C) 1988-2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+
+//nano hello_world.cpp
+//ls
+//hello_world.cpp
+//cat hello_world.cpp
+
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::endl;
+
+int main() {
+        cout << "Hello World!!!" << endl;
+
+        return EXIT_SUCCESS;
+}
+
+//g++ hello_world.cpp
+//ls
+a.out  discussion.txt  hello_world.cpp  linux
+//  ./a.out
+Hello World!!!
