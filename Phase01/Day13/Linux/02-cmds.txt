@@ -1,0 +1,72 @@
+// ls
+a.out  discussion.txt  hello_world.cpp  linux
+// mkdir cpp
+// mv hello_world.cpp cpp/
+// ls
+a.out  cpp  discussion.txt  linux
+// cd cpp
+// ls
+hello_world.cpp
+// cp hello_world.cpp hello_name.cpp
+// ls
+hello_name.cpp  hello_world.cpp
+// nano hello_name.cpp
+// cat hello_name.cpp
+
+
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+        char name[255];
+
+        cout << "Enter name:";
+        cin >> name;
+        cout << "Hello " << name << "!!!" << endl;
+
+        return EXIT_SUCCESS;
+}
+// nano hello_name.cpp
+// cat hello_name.cpp
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+        char name[255];
+
+        cout << "Enter name:";
+        cin >> name;
+        cout << "Hello " << name << "!!!" << endl
+
+        return EXIT_SUCCESS;
+}
+
+// nano hello_name.cpp
+// cat hello_name.cpp
+
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+        char name[255];
+
+        cout << "Enter name:";
+        cin >> name;
+        cout << "Hello " << name << "!!!" << endl;
+
+        return EXIT_SUCCESS;
+}
+
+// g++ hello_name.cpp
+//  ./a.out
+Enter name:Ayisha
+Hello Ayisha!!!
