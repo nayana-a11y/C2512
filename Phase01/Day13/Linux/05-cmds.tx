@@ -1,0 +1,85 @@
+// ls
+hello_2students.cpp  hello_2students_v2.cpp  hello_name.cpp  hello_student.cpp  hello_world.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cp hello_2students.cpp hello_2students_oops.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# vim hello_2students_oops.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# vim hello_2students_oops.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# vim hello_2students_oops.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_2students_oops.cpp
+#include <iostream>
+#include <cstdlib>
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+struct Student {
+        int id;
+        char name[255];
+};
+
+int main() {
+        Student student1;
+        Student student2;
+
+        cout << "Enter first student details." << endl;
+        cout << "Enter id:";
+        cin >> student1.id;
+        cout << "Enter name:";
+        cin >> student1.name;
+
+        cout << "Enter second student details." << endl;
+        cout << "Enter id:";
+        cin >> student2.id;
+        cout << "Enter name:";
+        cin >> student2.name;
+
+        cout << "Hello " << student1.name << " of id " << student1.id << "!!!" << endl;
+        cout << "Hello " << student2.name << " of id " << student2.id << "!!!" << endl;
+
+        return EXIT_SUCCESS;
+}
+
+Enter first student details.
+Enter id:1001
+Enter name:Ayisha
+Enter second student details.
+Enter id:1002
+Enter name:Athira
+Hello Ayisha of id 1001!!!
+Hello Athira of id 1002!!!
+
+
+// cat -n hello_2students_oops.cpp
+     1  #include <iostream>
+     2  #include <cstdlib>
+     3
+     4  using std::cout;
+     5  using std::cin;
+     6  using std::endl;
+     7
+     8  struct Student {
+     9          int id;
+    10          char name[255];
+    11  };
+    12
+    13  int main() {
+    14          Student student1;
+    15          Student student2;
+    16
+    17          cout << "Enter first student details." << endl;
+    18          cout << "Enter id:";
+    19          cin >> student1.id;
+    20          cout << "Enter name:";
+    21          cin >> student1.name;
+    22
+    23          cout << "Enter second student details." << endl;
+    24          cout << "Enter id:";
+    25          cin >> student2.id;
+    26          cout << "Enter name:";
+    27          cin >> student2.name;
+    28
+    29          cout << "Hello " << student1.name << " of id " << student1.id << "!!!" << endl;
+    30          cout << "Hello " << student2.name << " of id " << student2.id << "!!!" << endl;
+    31
+    32          return EXIT_SUCCESS;
+    33  }
