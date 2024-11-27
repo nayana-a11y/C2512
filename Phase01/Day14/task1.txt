@@ -17,12 +17,18 @@ editing using `vi`.
 1. `Create a C++ project directory`:
    - Create a directory called `cpp_vi_practice` 
    to store your C++ program files.
+    mkdir cpp_vi_practice
+
+cat number_check.cpp
+
 
 2. `Navigate to the project directory`:
    - Use the `cd` command to enter the `cpp_vi_practice` directory.
+      cd cpp_vi_practice
 
 3. `Create a new C++ file using `vi``:
    - Open the `vi` editor and create a new file named `number_check.cpp`.
+      vim number_check.cpp
 
 4. `Write a basic C++ program`:
    - In the `vi` editor, write a simple C++ program 
@@ -50,11 +56,22 @@ editing using `vi`.
    - After writing the program, save it and 
    exit the `vi` editor using `:wq`.
 
+
+   naina@ubuntu:~/Documents/phase1/Day14/cpp_vi_practice$ g++ number_check.cpp
+   naina@ubuntu:~/Documents/phase1/Day14/cpp_vi_practice$ ./a.out
+   Enter a number: 4
+   The number is positive. 
+   naina@ubuntu:~/Documents/phase1/Day14/cpp_vi_practice$ ./a.out
+   Enter a number: -3
+   The number is negative.
+
 6. `Edit the program`:
    - Open `number_check.cpp` again in `vi` and 
    modify the program to check 
    if the number is even or odd, 
    in addition to being positive, negative, or zero.
+
+   vim number_check.cpp
 
 7. `Use `vi` to navigate and edit the file`:
    - Use basic `vi` navigation and editing commands like `i` (insert), 
@@ -66,23 +83,67 @@ editing using `vi`.
    compile the program using `g++` 
    to generate an executable named `number_check`.
 
+
+    g++ -o number_check_2 number_check.cpp 
+
 9. `Run the compiled program`:
    - Run the program to verify 
    that it correctly checks 
    whether the number is positive, negative, or zero, and 
    also checks if it is even or odd.
 
+      Enter a number: 5
+      The number is positive and odd. 
+
+      Enter a number: -5
+      The number is negative and odd. 
+
+
 10. `View the contents of the file`:
     - Use the `cat` command to display the contents of `number_check.cpp`.
+      cat number_check.cpp
+
+      #include<iostream>
+      using namespace std;
+
+      int main(){
+         int number;
+         cout << "Enter a number: ";
+         cin >> number;
+
+         if(number%2==0){
+
+            if(number > 0)
+               cout << "The number is positive and even " << endl;
+            else if(number < 0)
+               cout << "The number is negative and even " <<endl;
+            else
+               cout << "The number is zero." << endl;
+            return 0;
+         }
+         else{
+            if (number > 0)
+               cout << "The number is positive and odd. " << endl;
+            else if(number < 0)
+               cout << "The number is negative and odd. " <<endl;
+            else
+               cout << "The number is zero." << endl;
+            return 0;
+         }
+      }
+
 
 11. `Delete the program file`:
     - Once done testing the program, 
     remove the `number_check.cpp` file using the `rm` command.
 
+      rm number_check.cpp
+      rm a.out
+
 12. `Delete the project directory`:
     - Check if the `cpp_vi_practice` directory is empty, and 
     remove it if it is.
-
+      rmdir cpp_vi_practice
 ---
 
 `Goal`:  
