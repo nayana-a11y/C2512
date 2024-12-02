@@ -6,7 +6,7 @@ using namespace std;
 // *****Const.h*****
 // Constants
 const int MAX_Dosages = 100;
-// *****Booking.h*****
+// *****Prescription.h*****
 class Prescription {
     friend class PrescriptionManager;
     private:
@@ -17,7 +17,7 @@ class Prescription {
 class PrescriptionManager {
     private:
         // attributes
-        Prescription Dosages[MAX_Dosages];    
+        Prescription Prescriptions[MAX_Dosages];    
         int numDosages;
     public:
         // support
@@ -68,13 +68,12 @@ void PrescriptionManager::create() {
         return;
     }
 
-    int PrescriptionID; 
+    string PrescriptionID; 
     int Dosage;
 
     cout << "Enter Prescription ID: ";
     cin >> PrescriptionID;
 
-    // Ensure booking ID is unique
     if (findIndexById(PrescriptionID) != -1) {
         cout << "Error: Prescription ID already exists. Please use a unique ID.\n";
         return;
@@ -83,12 +82,11 @@ void PrescriptionManager::create() {
     cout << "Enter Dosage: ";
     cin >> Dosage;
 
-    // Store the booking details
-    Dosages[numDosages].PrescriptionID = PrescriptionID;
-    Dosages[numDosages].Dosage = Dosage;
+    Prescriptions[numDosages].PrescriptionID = PrescriptionID;
+    Prescriptions[numDosages].Dosage = Dosage;
     numDosages++;
 
-    cout << "Booking created successfully.\n";
+    cout << "Prescription created successfully.\n";
 }
 
 /**
@@ -104,20 +102,20 @@ void PrescriptionManager::displayAll() {
     cout << "| Prescription ID | Dosage  |\n";
     cout << "------------------------------------------------\n";
     for (int i = 0; i < numDosages; i++) {
-        cout << "| " << setw(10) << Dosages[i].PrescriptionID << " | "
-             << setw(13) << Dosages[i].Dosage << " | \n";
+        cout << "| " << setw(10) << Prescriptions[i].PrescriptionID << " | "
+             << setw(13) << Prescriptions[i].Dosage << " | \n";
     }
     cout << "------------------------------------------------\n";
 }
 
 /**
- * @brief Finds the index of a booking by ID.
- * @param id Booking ID to search for.
- * @return Index of the booking if found, -1 otherwise.
+ * @brief Finds the index of a Prescription by ID.
+ * @param id Prescription ID to search for.
+ * @return Index of the Dosages if found, -1 otherwise.
  */
 int PrescriptionManager::findIndexById(int id) {
     for (int i = 0; i < numDosages; i++) {
-        if (Dosages[i].PrescriptionID == id) {
+        if (Prescriptions[i].PrescriptionID == id) {
             return i;
         }
     }
@@ -125,11 +123,11 @@ int PrescriptionManager::findIndexById(int id) {
 }
 
 /**
- * @brief Edits an existing booking by ID.
+ * @brief Edits an existing Dosages by ID.
  */
 
 void PrescriptionManager::editById() {
-    int PrescriptionID;
+    string PrescriptionID;
     cout << "Enter PrescriptionID to edit: ";
     cin >> PrescriptionID;
 
@@ -139,19 +137,19 @@ void PrescriptionManager::editById() {
         return;
     }
 
-    cout << "Current Details - Dosage : " << Dosages[index].Dosage << "\n";
+    cout << "Current Details - Dosage : " << Prescriptions[index].Dosage << "\n";
 
     cout << "Enter New Dosage Amount: ";
-    cin >> Dosages[index].Dosage;
+    cin >> Prescriptions[index].Dosage;
 
     cout << "Dosage updated successfully.\n";
 }
 
 /**
- * @brief Deletes an existing booking by ID.
+ * @brief Deletes an existing Dosage by ID.
  */
 void PrescriptionManager::deleteById() {
-    int PrescriptionID;
+    string PrescriptionID;
     cout << "Enter Prescription ID to delete: ";
     cin >> PrescriptionID;
 
@@ -163,7 +161,7 @@ void PrescriptionManager::deleteById() {
 
     // Shift data to fill the gap
     for (int i = index; i < numDosages - 1; i++) {
-        Dosages[i] = Dosages[i + 1];
+        Prescriptions[i] = Prescriptions[i + 1];
     }
     numDosages--;
 
