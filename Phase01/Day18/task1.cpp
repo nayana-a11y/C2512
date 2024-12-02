@@ -5,7 +5,7 @@ using namespace std;
 
 // *****Const.h*****
 // Constants
-const int MAX_BOOKINGS = 100;
+const int MAX_Dosages = 100;
 // *****Booking.h*****
 class Prescription {
     friend class PrescriptionManager;
@@ -17,8 +17,8 @@ class Prescription {
 class PrescriptionManager {
     private:
         // attributes
-        Prescription bookings[MAX_BOOKINGS];    
-        int numBookings;
+        Prescription Dosages[MAX_Dosages];    
+        int numDosages;
     public:
         // support
         int findIndexById(int PrescriptionID);
@@ -63,7 +63,7 @@ int main() {
 }
 
 void PrescriptionManager::create() {
-    if (numBookings >= MAX_BOOKINGS) {
+    if (numDosages >= MAX_Dosages) {
         cout << "Error: Maximum limit reached.\n";
         return;
     }
@@ -84,18 +84,18 @@ void PrescriptionManager::create() {
     cin >> Dosage;
 
     // Store the booking details
-    bookings[numBookings].PrescriptionID = PrescriptionID;
-    bookings[numBookings].Dosage = Dosage;
-    numBookings++;
+    Dosages[numDosages].PrescriptionID = PrescriptionID;
+    Dosages[numDosages].Dosage = Dosage;
+    numDosages++;
 
     cout << "Booking created successfully.\n";
 }
 
 /**
- * @brief Displays all existing bookings in a tabular format.
+ * @brief Displays all existing Dosages in a tabular format.
  */
 void PrescriptionManager::displayAll() {
-    if (numBookings == 0) {
+    if (numDosages == 0) {
         cout << "No prescription available to display.\n";
         return;
     }
@@ -103,9 +103,9 @@ void PrescriptionManager::displayAll() {
     cout << "------------------------------------------------\n";
     cout << "| Prescription ID | Dosage  |\n";
     cout << "------------------------------------------------\n";
-    for (int i = 0; i < numBookings; i++) {
-        cout << "| " << setw(10) << bookings[i].PrescriptionID << " | "
-             << setw(13) << bookings[i].Dosage << " | \n";
+    for (int i = 0; i < numDosages; i++) {
+        cout << "| " << setw(10) << Dosages[i].PrescriptionID << " | "
+             << setw(13) << Dosages[i].Dosage << " | \n";
     }
     cout << "------------------------------------------------\n";
 }
@@ -116,8 +116,8 @@ void PrescriptionManager::displayAll() {
  * @return Index of the booking if found, -1 otherwise.
  */
 int PrescriptionManager::findIndexById(int id) {
-    for (int i = 0; i < numBookings; i++) {
-        if (bookings[i].PrescriptionID == id) {
+    for (int i = 0; i < numDosages; i++) {
+        if (Dosages[i].PrescriptionID == id) {
             return i;
         }
     }
@@ -139,10 +139,10 @@ void PrescriptionManager::editById() {
         return;
     }
 
-    cout << "Current Details - Dosage : " << bookings[index].Dosage << "\n";
+    cout << "Current Details - Dosage : " << Dosages[index].Dosage << "\n";
 
     cout << "Enter New Dosage Amount: ";
-    cin >> bookings[index].Dosage;
+    cin >> Dosages[index].Dosage;
 
     cout << "Dosage updated successfully.\n";
 }
@@ -162,22 +162,22 @@ void PrescriptionManager::deleteById() {
     }
 
     // Shift data to fill the gap
-    for (int i = index; i < numBookings - 1; i++) {
-        bookings[i] = bookings[i + 1];
+    for (int i = index; i < numDosages - 1; i++) {
+        Dosages[i] = Dosages[i + 1];
     }
-    numBookings--;
+    numDosages--;
 
     cout << " deleted successfully.\n";
 }
 
 PrescriptionManager::PrescriptionManager() {
-    numBookings = 0;
+    numDosages = 0;
 }
 // *****Menu.cpp*****
 void printMenu() {
     cout << "\n=== Prescription Management System ===\n";
     cout << "1. Create Booking\n";
-    cout << "2. Display All Bookings\n";
+    cout << "2. Display All Dosages\n";
     cout << "3. Edit Booking\n";
     cout << "4. Delete Booking\n";
     cout << "5. Exit\n";
