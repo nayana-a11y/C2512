@@ -10,7 +10,7 @@ const int MAX_Dosages = 100;
 class Prescription {
     friend class PrescriptionManager;
     private:
-        int PrescriptionID;
+        string PrescriptionID;
         int Dosage;
 };
 // *****PrescriptionManager.h*****
@@ -21,7 +21,7 @@ class PrescriptionManager {
         int numDosages;
     public:
         // support
-        int findIndexById(int PrescriptionID);
+        int findIndexById(string PrescriptionID);
         // behaviours
         void create();
         void displayAll();
@@ -113,7 +113,7 @@ void PrescriptionManager::displayAll() {
  * @param id Prescription ID to search for.
  * @return Index of the Dosages if found, -1 otherwise.
  */
-int PrescriptionManager::findIndexById(int id) {
+int PrescriptionManager::findIndexById(string id) {
     for (int i = 0; i < numDosages; i++) {
         if (Prescriptions[i].PrescriptionID == id) {
             return i;
@@ -165,7 +165,7 @@ void PrescriptionManager::deleteById() {
     }
     numDosages--;
 
-    cout << " deleted successfully.\n";
+    cout << " Prescription deleted successfully.\n";
 }
 
 PrescriptionManager::PrescriptionManager() {
