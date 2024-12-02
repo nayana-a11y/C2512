@@ -6,7 +6,7 @@ using namespace std;
 // *****Const.h*****
 // Constants
 const int MAX_Dosages = 100;
-// *****Booking.h*****
+// *****Prescription.h*****
 class Prescription {
     friend class PrescriptionManager;
     private:
@@ -119,7 +119,7 @@ void PrescriptionManager::create() {
     cout << "Enter Prescription ID: ";
     cin >> PrescriptionID;
 
-    // Ensure booking ID is unique
+    // Ensure Prescription ID is unique
     if (findIndexById(PrescriptionID) != -1) {
         cout << "Error: Prescription ID already exists. Please use a unique ID.\n";
         return;
@@ -128,7 +128,7 @@ void PrescriptionManager::create() {
     cout << "Enter Dosage: ";
     cin >> Dosage;
 
-    // Store the booking details
+    // Store the details
     Dosages[numDosages].PrescriptionID = PrescriptionID;
     Dosages[numDosages].Dosage = Dosage;
     numDosages++;
@@ -156,9 +156,9 @@ void PrescriptionManager::displayAll() {
 }
 
 /**
- * @brief Finds the index of a booking by ID.
- * @param id Booking ID to search for.
- * @return Index of the booking if found, -1 otherwise.
+ * @brief Finds the index of a Dosages by ID.
+ * @param id Prescription ID to search for.
+ * @return Index of the Dosages if found, -1 otherwise.
  */
 int PrescriptionManager::findIndexById(int id) {
     for (int i = 0; i < numDosages; i++) {
@@ -170,7 +170,7 @@ int PrescriptionManager::findIndexById(int id) {
 }
 
 /**
- * @brief Edits an existing booking by ID.
+ * @brief Edits an existing Dosage by ID.
  */
 
 void PrescriptionManager::editById() {
@@ -193,7 +193,7 @@ void PrescriptionManager::editById() {
 }
 
 /**
- * @brief Deletes an existing booking by ID.
+ * @brief Deletes an existing Dosages by ID.
  */
 void PrescriptionManager::deleteById() {
     int PrescriptionID;
@@ -212,7 +212,7 @@ void PrescriptionManager::deleteById() {
     }
     numDosages--;
 
-    cout << " Deleted successfully.\n";
+    cout << " Dosage Deleted successfully.\n";
 }
 
 PrescriptionManager::PrescriptionManager() {
@@ -233,7 +233,7 @@ void printMenu() {
 
 }
 
-//*****HospitalStay.cpp*****
+//*****Prescription.cpp*****
 bool Prescription::GreaterThan(const Prescription& other)
 {
     return (Dosage > other.Dosage);
@@ -253,8 +253,8 @@ int Prescription::GetDosage()
 {
     return Dosage;
 }
-//*****HospitalStayAggregator.cpp*****
-// Function to find the index of the HospitalStay with the minimum years of Stay
+//*****PrescriptionAggregator.cpp*****
+// Function to find the index of the Prescription with the minimum dosage
 int PrescriptionAggregator::findMin(PrescriptionManager& manager) {
     Prescription* arr = manager.Dosages;
     int& n = manager.numDosages;
@@ -268,7 +268,7 @@ int PrescriptionAggregator::findMin(PrescriptionManager& manager) {
     return minIndex;
 }
 
-// Function to find the index of the HospitalStay with the maximum years of Stay
+// Function to find the index of the Prescription with the maximum dosage
 int PrescriptionAggregator::findMax(PrescriptionManager& manager) {
     Prescription* arr = manager.Dosages;
     int& n = manager.numDosages;
@@ -282,7 +282,7 @@ int PrescriptionAggregator::findMax(PrescriptionManager& manager) {
     return maxIndex;
 }
 
-// Function to find the index of the HospitalStay with the second minimum years of Stay
+// Function to find the index of the Prescription with the second minimum dosage
 int PrescriptionAggregator::findSecondMin(PrescriptionManager& manager) {
     Prescription* arr = manager.Dosages;
     int& n = manager.numDosages;
@@ -300,7 +300,7 @@ int PrescriptionAggregator::findSecondMin(PrescriptionManager& manager) {
     return secondMinIndex;
 }
 
-// Function to find the index of the HospitalStay with the second maximum years of Stay
+// Function to find the index of the Prescription with the second maximum dosage
 int PrescriptionAggregator::findSecondMax(PrescriptionManager& manager) {
     Prescription* arr = manager.Dosages;
     int& n = manager.numDosages;
