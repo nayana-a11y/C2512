@@ -49,7 +49,11 @@ Linux Shell
 2. `Types of Shells`:  
    - `Bash (Bourne Again Shell)`: Most common and beginner-friendly.  
          widely available and installed by default on most linus and macOS.
+     It's the default shell for most Linux and macOS distributions.
 
+       The `Bash Shell` is a command-line interface used 
+       for interacting with the operating system. 
+      
    - `Zsh (Z Shell)`: Advanced features and customizations.  
          powerful and versatile shell with features such as auto-completion , spelling correction, and history manipulation.
 
