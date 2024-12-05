@@ -15,13 +15,15 @@ with a C++ project by
 `Tasks`:
 
 1. Create a new directory called `my_cpp_project` for your C++ programs.
+
     mkdir my_cpp_project
 
 2. Change into the `my_cpp_project` directory.
+
     cd my_cpp_project
 
-3. Create a C++ file named `greet.cpp` 
-   in the `my_cpp_project` directory.
+3. Create a C++ file named `greet.cpp` in the `my_cpp_project` directory.
+
     nano greet.cpp
 
 4. Write a C++ program inside `greet.cpp` 
