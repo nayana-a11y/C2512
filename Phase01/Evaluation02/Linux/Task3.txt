@@ -47,13 +47,22 @@ Linux Shell
    with the Linux operating system.
 
 2. `Types of Shells`:  
-   - `Bash (Bourne Again Shell)`: Most common and beginner-friendly.  
-         widely available and installed by default on most linus and macOS.
-     It's the default shell for most Linux and macOS distributions.
+   - ``sh` (Bourne Shell):`
+      - Developed by Stephen Bourne at AT&T Bell Labs in 1977.
+      - A simple, POSIX-compliant shell used for basic scripting and command execution.
+      - Designed to be portable and lightweight, with minimal features.
 
-       The `Bash Shell` is a command-line interface used 
-       for interacting with the operating system. 
-      
+   - `Bash (Bourne Again Shell)`: 
+         The `Bash Shell` is a command-line interface used 
+         for interacting with the operating system. 
+       - An enhanced version of `sh`, developed by the GNU Project in 1989.
+       - Incorporates features from other shells like `ksh` (Korn Shell) and `csh` (C Shell).
+       - Fully backward-compatible with `sh` but includes many additional features.
+         Most common and beginner-friendly.  
+         widely available and installed by default on most linus and macOS.
+         It's the default shell for most Linux and macOS distributions.
+
+         
    - `Zsh (Z Shell)`: Advanced features and customizations.  
          powerful and versatile shell with features such as auto-completion , spelling correction, and history manipulation.
 
@@ -82,6 +91,7 @@ Linux Shell
 
 Linux shells are powerful tools 
 for interacting with the system efficiently!
+
 
 
 
