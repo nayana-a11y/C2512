@@ -1,4 +1,8 @@
-#include <iostream>
+// Example 7: `Animal Kingdom`
+// - `Base Class:` Animal `{field: species, behavior: eat()}`
+// - `Derived Class:` Bird `{field: wingSpan, behavior: fly()}`
+
+include <iostream>
 #include <string>
 
 class Animal {
@@ -40,8 +44,8 @@ public:
 };
 
 int main() {
-    // static objects
 
+    // create static objects
     Animal animal("Mammal");
     animal.Eat();
 
