@@ -105,14 +105,14 @@ int main() {
     smartphone.browseWeb();    
 
     // Create an dynamic object
-    Smartphone* smartphone = new Smartphone("Samsung", "5G Carrier", "108MP", "Android 13");
+    // Smartphone* smartphone = new Smartphone("Samsung", "5G Carrier", "108MP", "Android 13");
 
-    smartphone->powerOn();   
-    smartphone->makeCall();  
-    smartphone->takePhoto(); 
-    smartphone->browseWeb(); 
+    // smartphone->powerOn();   
+    // smartphone->makeCall();  
+    // smartphone->takePhoto(); 
+    // smartphone->browseWeb(); 
 
-    delete smartphone;
+    // delete smartphone;
 
     return 0;
 
