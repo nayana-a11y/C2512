@@ -17,11 +17,11 @@ protected:
     int age;
 
 public:
-    // Constructor with dynamic allocation for name
+    // Constructor 
     Person(const char* name, int age) {
-        this->name = new char[strlen(name) + 1];  // Allocate memory for name
-        strcpy(this->name, name);  // Copy the string to the dynamically allocated memory
-        this->age = age;
+        // this->name = new char[strlen(name) + 1];  // Allocate memory for name
+        // strcpy(this->name, name);  // Copy the string to the dynamically allocated memory
+        // this->age = age;
         cout << "Person constructor called for " << this->name << endl;
     }
 
@@ -39,7 +39,7 @@ public:
 // Derived class: Teacher
 class Teacher : public Person {
 private:
-    char* subject;  // Dynamic C-string for subject
+    char* subject;  // Dynamic C-string 
     int experienceYears;
 
 public:
@@ -51,7 +51,7 @@ public:
         cout << "Teacher constructor called for " << this->name << endl;
     }
 
-    // Destructor to clean up dynamically allocated memory
+    // Destructor 
     ~Teacher() {
         cout << "Teacher destructor called for " << name << endl;
         delete[] subject;  // Free dynamically allocated memory for subject

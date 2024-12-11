@@ -2,7 +2,8 @@
 // - `Base Class:` Animal `{field: species, behavior: eat()}`
 // - `Derived Class:` Bird `{field: wingSpan, behavior: fly()}`
 
-include <iostream>
+#include <iostream>
+using namespace std;
 #include <string>
 
 class Animal {
@@ -45,7 +46,7 @@ public:
 
 int main() {
 
-    // create static objects
+    // create static objects 
     Animal animal("Mammal");
     animal.Eat();
 
@@ -53,7 +54,7 @@ int main() {
     bird.Fly(); 
     bird.Eat();  
 
-    // dynamic objects
+    // create dynamic objects
     // Animal* animal = new Animal("Mammal");   
     // Bird* bird = new Bird("Eagle", "8 feet");   
     
