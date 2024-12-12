@@ -46,24 +46,24 @@ public:
 
 int main() {
 
-    // create static objects 
-    Animal animal("Mammal");
-    animal.Eat();
+    // // create static objects 
+    // Animal animal("Mammal");
+    // animal.Eat();
 
-    Bird bird("Eagle", "8 feet"); 
-    bird.Fly(); 
-    bird.Eat();  
+    // Bird bird("Eagle", "8 feet"); 
+    // bird.Fly(); 
+    // bird.Eat();  
 
     // create dynamic objects
-    // Animal* animal = new Animal("Mammal");   
-    // Bird* bird = new Bird("Eagle", "8 feet");   
+    Animal* animal = new Animal("Mammal");   
+    Bird* bird = new Bird("Eagle", "8 feet");   
     
-    // animal->Eat();
-    // bird->Fly();
-    // bird->Eat(); 
+    animal->Eat();
+    bird->Fly();
+    bird->Eat(); 
 
-    // delete animal; 
-    // delete bird; 
+    delete animal; 
+    delete bird; 
 
     return 0;
 }

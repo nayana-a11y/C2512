@@ -18,20 +18,20 @@ protected:
 
 public:
     // Constructor 
-    Person(const char* name, int age) {
+    Person( char* name, int age) {
         // this->name = new char[strlen(name) + 1];  // Allocate memory for name
-        // strcpy(this->name, name);  // Copy the string to the dynamically allocated memory
-        // this->age = age;
+        strcpy(this->name, name);    // Copy the string to the dynamically allocated memory
+        this->age = age;
         cout << "Person constructor called for " << this->name << endl;
     }
 
-    // Virtual destructor to ensure derived class destructors are called
+    // destructor 
     virtual ~Person() {
         cout << "Person destructor called for " << name << endl;
-        delete[] name;  // Free dynamically allocated memory for name
+        delete[] name;  
     }
 
-    // Pure virtual functions for dynamic binding
+    // Pure virtual functions 
     virtual void introduce() = 0;
     virtual void work() = 0;
 };
@@ -43,8 +43,8 @@ private:
     int experienceYears;
 
 public:
-    // Constructor with dynamic allocation for subject
-    Teacher(const char* name, int age, const char* subject, int experienceYears)
+    // Constructor 
+    Teacher( char* name, int age,  char* subject, int experienceYears)
         : Person(name, age), experienceYears(experienceYears) {
         this->subject = new char[strlen(subject) + 1];  // Allocate memory for subject
         strcpy(this->subject, subject);  // Copy the subject string
