@@ -13,11 +13,6 @@
         here, create the dynamic programmer object assigned to employee pointer.
         field 'tasks' is dynamic memoery.
         operator << overloadable, swap is overridden.
-    //1.4 replace dynamic fields as smart pointers
-        prove that Employee virtual destructor is not needed.
-        create the dynamic programmer object assigned to employee smart pointer
-    //1.5 construct array of N programmers. read programmers from keyboard.
-        cin >> var; // overload operator>> in employee and programmer
 */
 
 #include <iostream>

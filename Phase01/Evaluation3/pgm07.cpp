@@ -1,3 +1,9 @@
+// 2.1
+//     change the crud ops with HospitalStay from array of HospitalStay called `stays`
+//     to vector<HospitalStay> stays.
+//  2.2 vector -> deque 
+
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -24,10 +30,10 @@ void printMenu();
 int main() {
     PrescriptionManager manager;
 
-    int choice; // User's menu choice
+    int choice; 
 
     do {
-        printMenu(); // Display menu
+        printMenu(); 
         cout << "Enter your choice: ";
         cin >> choice;
 
