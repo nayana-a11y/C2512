@@ -221,6 +221,7 @@ int main()
     {
         delete programmers[i];
     }
+    
     delete[] programmers;
 
     return 0;

@@ -6,26 +6,17 @@
 
 using namespace std;
 
-// Constants
-const int MAX_Dosages = 100;
-
-class Prescription {
-    friend class PrescriptionManager;
-    private:
-        string PrescriptionID;
-        int Dosage;
-};
-
 class PrescriptionManager {
-    private:
-        deque<Prescription> Prescriptions;
-    public:
-        int findIndexById(const string& PrescriptionID);
-        void create();
-        void displayAll();
-        void editById();
-        void deleteById();
-        PrescriptionManager();
+private:
+    deque<string> PrescriptionIDs;
+    deque<int> Dosages;
+
+public:
+    int findIndexById(const string& PrescriptionID);
+    void create();
+    void displayAll();
+    void editById();
+    void deleteById();
 };
 
 void printMenu();
@@ -40,7 +31,6 @@ int main() {
         cout << "Enter your choice: ";
         cin >> choice;
 
-        // Menu-driven functionality
         switch (choice) {
             case 1: manager.create();       break;
             case 2: manager.displayAll();   break;
@@ -58,12 +48,7 @@ int main() {
 }
 
 void PrescriptionManager::create() {
-    if (Prescriptions.size() >= MAX_Dosages) {
-        cout << "Error: Maximum limit reached.\n";
-        return;
-    }
-
-    string PrescriptionID; 
+    string PrescriptionID;
     int Dosage;
 
     cout << "Enter Prescription ID: ";
@@ -77,41 +62,37 @@ void PrescriptionManager::create() {
     cout << "Enter Dosage: ";
     cin >> Dosage;
 
-    Prescription newPrescription;
-    newPrescription.PrescriptionID = PrescriptionID;
-    newPrescription.Dosage = Dosage;
-
-    Prescriptions.push_back(newPrescription);
+    PrescriptionIDs.push_back(PrescriptionID);
+    Dosages.push_back(Dosage);
 
     cout << "Prescription created successfully.\n";
 }
 
 void PrescriptionManager::displayAll() {
-    if (Prescriptions.empty()) {
+    if (PrescriptionIDs.empty()) {
         cout << "No prescriptions available to display.\n";
         return;
     }
 
     cout << "------------------------------------------------\n";
-    cout << "| Prescription ID | Dosage  |\n";
+    cout << "| Prescription ID   | Dosage       |\n";
     cout << "------------------------------------------------\n";
-    for (const auto& prescription : Prescriptions) {
-        cout << "| " << setw(10) << prescription.PrescriptionID << " | "
-             << setw(13) << prescription.Dosage << " | \n";
+
+    for (size_t i = 0; i < PrescriptionIDs.size(); i++) {
+        cout << "| " << setw(15) << PrescriptionIDs[i] << " | "
+             << setw(12) << Dosages[i] << " |\n";
     }
+
     cout << "------------------------------------------------\n";
 }
 
-
 int PrescriptionManager::findIndexById(const string& id) {
-    for (size_t i = 0; i < Prescriptions.size(); ++i) {
-        if (Prescriptions[i].PrescriptionID == id) {
-            return i;
-        }
+    auto iter = find(PrescriptionIDs.begin(), PrescriptionIDs.end(), id);
+    if (iter != PrescriptionIDs.end()) {
+        return distance(PrescriptionIDs.begin(), iter);
     }
     return -1;
 }
-
 
 void PrescriptionManager::editById() {
     string PrescriptionID;
@@ -124,14 +105,12 @@ void PrescriptionManager::editById() {
         return;
     }
 
-    cout << "Current Details - Dosage: " << Prescriptions[index].Dosage << "\n";
-
+    cout << "Current Dosage: " << Dosages[index] << "\n";
     cout << "Enter New Dosage Amount: ";
-    cin >> Prescriptions[index].Dosage;
+    cin >> Dosages[index];
 
     cout << "Dosage updated successfully.\n";
 }
-
 
 void PrescriptionManager::deleteById() {
     string PrescriptionID;
@@ -144,13 +123,10 @@ void PrescriptionManager::deleteById() {
         return;
     }
 
-    Prescriptions.erase(Prescriptions.begin() + index);
+    PrescriptionIDs.erase(PrescriptionIDs.begin() + index);
+    Dosages.erase(Dosages.begin() + index);
 
     cout << "Prescription deleted successfully.\n";
-}
-
-PrescriptionManager::PrescriptionManager() {
-    // No explicit initialization required for deque
 }
 
 void printMenu() {
