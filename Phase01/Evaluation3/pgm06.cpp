@@ -1,13 +1,14 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <string>
+#include <algorithm>
+
 using namespace std;
 
-// *****Const.h*****
-// Constants
+
 const int MAX_Dosages = 100;
 
-// *****Prescription.h*****
 class Prescription {
     friend class PrescriptionManager;
     private:
@@ -15,15 +16,12 @@ class Prescription {
         int Dosage;
 };
 
-// *****PrescriptionManager.h*****
 class PrescriptionManager {
     private:
         // Attributes
         vector<Prescription> Prescriptions;
     public:
-        // Support
         int findIndexById(const string& PrescriptionID);
-        // Behaviours
         void create();
         void displayAll();
         void editById();
@@ -32,10 +30,9 @@ class PrescriptionManager {
         PrescriptionManager();
 };
 
-// *****Menu.h*****
+
 void printMenu();
 
-// *****Main.cpp*****
 int main() {
     PrescriptionManager manager;
 
@@ -92,9 +89,7 @@ void PrescriptionManager::create() {
     cout << "Prescription created successfully.\n";
 }
 
-/**
- * @brief Displays all existing Dosages in a tabular format.
- */
+
 void PrescriptionManager::displayAll() {
     if (Prescriptions.empty()) {
         cout << "No prescriptions available to display.\n";
@@ -111,11 +106,6 @@ void PrescriptionManager::displayAll() {
     cout << "------------------------------------------------\n";
 }
 
-/**
- * @brief Finds the index of a Prescription by ID.
- * @param id Prescription ID to search for.
- * @return Index of the Dosages if found, -1 otherwise.
- */
 int PrescriptionManager::findIndexById(const string& id) {
     for (size_t i = 0; i < Prescriptions.size(); ++i) {
         if (Prescriptions[i].PrescriptionID == id) {
@@ -125,9 +115,7 @@ int PrescriptionManager::findIndexById(const string& id) {
     return -1;
 }
 
-/**
- * @brief Edits an existing Dosages by ID.
- */
+
 void PrescriptionManager::editById() {
     string PrescriptionID;
     cout << "Enter Prescription ID to edit: ";
@@ -147,9 +135,7 @@ void PrescriptionManager::editById() {
     cout << "Dosage updated successfully.\n";
 }
 
-/**
- * @brief Deletes an existing Dosage by ID.
- */
+
 void PrescriptionManager::deleteById() {
     string PrescriptionID;
     cout << "Enter Prescription ID to delete: ";
@@ -170,7 +156,6 @@ PrescriptionManager::PrescriptionManager() {
     // No explicit initialization required for vector
 }
 
-// *****Menu.cpp*****
 void printMenu() {
     cout << "\n=== Prescription Management System ===\n";
     cout << "1. Create Prescription\n";
