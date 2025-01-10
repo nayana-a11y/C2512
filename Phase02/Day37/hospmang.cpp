@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_map>
 #include <algorithm>
+#include <iomanip> // For formatting boxes
 using namespace std;
 
 struct Patient {
@@ -52,6 +53,16 @@ string generateAppointmentId() {
     return "APT" + to_string(appointmentCounter++);
 }
 
+void printBoxed(const string &header, const vector<string> &lines) {
+    cout << "---------------------------------------------------\n";
+    cout << "| " << setw(50) << left << header << "|\n";
+    cout << "---------------------------------------------------\n";
+    for (const auto &line : lines) {
+        cout << "| " << setw(50) << left << line << "|\n";
+    }
+    cout << "---------------------------------------------------\n";
+}
+
 void addPatient() {
     Patient p;
     p.id = generatePatientId();
@@ -74,6 +85,46 @@ void addPatient() {
     cout << "Patient added successfully and ailment added to medical history!\n";
 }
 
+void updatePatient() {
+    string patientId;
+    cout << "Enter Patient ID: ";
+    cin >> patientId;
+
+    if (patients.find(patientId) == patients.end()) {
+        cout << "Patient not found!\n";
+        return;
+    }
+
+    Patient &p = patients[patientId];
+    cout << "Current Name: " << p.name << "\n";
+    cout << "Current Age: " << p.age << "\n";
+    cout << "Current Ailment: " << p.ailment << "\n";
+
+    cout << "Enter New Name (or press Enter to skip): ";
+    cin.ignore();
+    string newName;
+    getline(cin, newName);
+    if (!newName.empty()) p.name = newName;
+
+    cout << "Enter New Age (or press 0 to skip): ";
+    int newAge;
+    cin >> newAge;
+    if (newAge > 0) p.age = newAge;
+
+    cout << "Enter New Ailment (or press Enter to skip): ";
+    cin.ignore();
+    string newAilment;
+    getline(cin, newAilment);
+    if (!newAilment.empty()) {
+        p.ailment = newAilment;
+
+        // Update medical history
+        medicalHistories[patientId].history.push_back("Updated Ailment: " + newAilment);
+    }
+
+    cout << "Patient updated successfully!\n";
+}
+
 void addDoctor() {
     Doctor d;
     d.id = generateDoctorId();
@@ -88,66 +139,36 @@ void addDoctor() {
     cout << "Doctor added successfully!\n";
 }
 
-bool isAppointmentConflict(const string &doctorId, const string &patientId, const string &date, const string &time) {
-    for (const auto &a : appointments) {
-        if ((a.doctorId == doctorId || a.patientId == patientId) && a.date == date && a.time == time) {
-            return true;
-        }
-    }
-    return false;
-}
-
-void scheduleAppointment() {
-    Appointment a;
-    a.id = generateAppointmentId();
-    cout << "Generated Appointment ID: " << a.id << "\n";
-    cout << "Enter Patient ID: ";
-    cin >> a.patientId;
-
-    if (patients.find(a.patientId) == patients.end()) {
-        cout << "Error: Patient ID not found!\n";
-        return;
-    }
-
+void updateDoctor() {
+    string doctorId;
     cout << "Enter Doctor ID: ";
-    cin >> a.doctorId;
+    cin >> doctorId;
 
-    if (doctors.find(a.doctorId) == doctors.end()) {
-        cout << "Error: Doctor ID not found!\n";
+    if (doctors.find(doctorId) == doctors.end()) {
+        cout << "Doctor not found!\n";
         return;
     }
 
-    cout << "Enter Date (YYYY-MM-DD): ";
-    cin >> a.date;
-    cout << "Enter Time (HH:MM): ";
-    cin >> a.time;
+    Doctor &d = doctors[doctorId];
+    cout << "Current Name: " << d.name << "\n";
+    cout << "Current Specialty: " << d.specialty << "\n";
 
-    if (isAppointmentConflict(a.doctorId, a.patientId, a.date, a.time)) {
-        cout << "Error: Appointment conflict! Either the doctor or patient is already booked at this date and time.\n";
-        return;
-    }
+    cout << "Enter New Name (or press Enter to skip): ";
+    cin.ignore();
+    string newName;
+    getline(cin, newName);
+    if (!newName.empty()) d.name = newName;
 
-    appointments.push_back(a);
-    cout << "Appointment scheduled successfully!\n";
+    cout << "Enter New Specialty (or press Enter to skip): ";
+    string newSpecialty;
+    getline(cin, newSpecialty);
+    if (!newSpecialty.empty()) d.specialty = newSpecialty;
+
+    cout << "Doctor updated successfully!\n";
 }
 
-void viewAppointments() {
-    if (appointments.empty()) {
-        cout << "No appointments scheduled yet.\n";
-        return;
-    }
-    cout << "Appointments:\n";
-    for (const auto &a : appointments) {
-        cout << "ID: " << a.id
-             << ", Patient ID: " << a.patientId
-             << ", Doctor ID: " << a.doctorId
-             << ", Date: " << a.date
-             << ", Time: " << a.time << "\n";
-    }
-}
-
-void addMedicalHistory() {
-    string patientId, historyEntry;
+void viewPatient() {
+    string patientId;
     cout << "Enter Patient ID: ";
     cin >> patientId;
 
@@ -156,48 +177,45 @@ void addMedicalHistory() {
         return;
     }
 
-    cout << "Enter Medical History Entry: ";
-    cin.ignore();
-    getline(cin, historyEntry);
-
-    medicalHistories[patientId].patientId = patientId;
-    medicalHistories[patientId].history.push_back(historyEntry);
-
-    cout << "Medical history added successfully!\n";
+    Patient p = patients[patientId];
+    vector<string> details = {
+        "ID: " + p.id,
+        "Name: " + p.name,
+        "Age: " + to_string(p.age),
+        "Ailment: " + p.ailment
+    };
+    printBoxed("Patient Details", details);
 }
 
-void viewMedicalHistory() {
-    string patientId;
-    cout << "Enter Patient ID: ";
-    cin >> patientId;
+void viewDoctor() {
+    string doctorId;
+    cout << "Enter Doctor ID: ";
+    cin >> doctorId;
 
-    if (medicalHistories.find(patientId) == medicalHistories.end()) {
-        cout << "No medical history found for this patient.\n";
+    if (doctors.find(doctorId) == doctors.end()) {
+        cout << "Doctor not found!\n";
         return;
     }
 
-    cout << "Medical History for Patient ID " << patientId << ":\n";
-    for (const auto &entry : medicalHistories[patientId].history) {
-        cout << "- " << entry << "\n";
-    }
+    Doctor d = doctors[doctorId];
+    vector<string> details = {
+        "ID: " + d.id,
+        "Name: " + d.name,
+        "Specialty: " + d.specialty
+    };
+    printBoxed("Doctor Details", details);
 }
 
-void cancelAppointment() {
-    string appointmentId;
-    cout << "Enter Appointment ID to cancel: ";
-    cin >> appointmentId;
-
-    auto it = remove_if(appointments.begin(), appointments.end(),
-                        [&appointmentId](const Appointment &a) {
-                            return a.id == appointmentId;
-                        });
-
-    if (it != appointments.end()) {
-        appointments.erase(it, appointments.end());
-        cout << "Appointment canceled successfully!\n";
-    } else {
-        cout << "Appointment not found!\n";
+void viewAppointments() {
+    if (appointments.empty()) {
+        cout << "No appointments scheduled yet.\n";
+        return;
     }
+    vector<string> details;
+    for (const auto &a : appointments) {
+        details.push_back("ID: " + a.id + ", Patient ID: " + a.patientId + ", Doctor ID: " + a.doctorId + ", Date: " + a.date + ", Time: " + a.time);
+    }
+    printBoxed("Appointments", details);
 }
 
 void hospitalManagementSystem() {
@@ -205,12 +223,12 @@ void hospitalManagementSystem() {
     do {
         cout << "\nWelcome to Hospital Management System\n";
         cout << "1. Add Patient\n";
-        cout << "2. Add Doctor\n";
-        cout << "3. Schedule Appointment\n";
-        cout << "4. View Appointments\n";
-        cout << "5. Add Medical History\n";
-        cout << "6. View Medical History\n";
-        cout << "7. Cancel Appointment\n";
+        cout << "2. Update Patient\n";
+        cout << "3. View Patient\n";
+        cout << "4. Add Doctor\n";
+        cout << "5. Update Doctor\n";
+        cout << "6. View Doctor\n";
+        cout << "7. View Appointments\n";
         cout << "8. Exit\n";
         cout << "Your Choice: ";
         cin >> choice;
@@ -220,22 +238,22 @@ void hospitalManagementSystem() {
             addPatient();
             break;
         case 2:
-            addDoctor();
+            updatePatient();
             break;
         case 3:
-            scheduleAppointment();
+            viewPatient();
             break;
         case 4:
-            viewAppointments();
+            addDoctor();
             break;
         case 5:
-            addMedicalHistory();
+            updateDoctor();
             break;
         case 6:
-            viewMedicalHistory();
+            viewDoctor();
             break;
         case 7:
-            cancelAppointment();
+            viewAppointments();
             break;
         case 8:
             cout << "Exiting Hospital Management System...\n";
