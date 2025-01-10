@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 struct Patient {
@@ -35,10 +36,26 @@ unordered_map<string, Doctor> doctors;
 vector<Appointment> appointments;
 unordered_map<string, MedicalHistory> medicalHistories;
 
+int patientCounter = 1000;
+int doctorCounter = 2000;
+int appointmentCounter = 3000;
+
+string generatePatientId() {
+    return "PAT" + to_string(patientCounter++);
+}
+
+string generateDoctorId() {
+    return "DOC" + to_string(doctorCounter++);
+}
+
+string generateAppointmentId() {
+    return "APT" + to_string(appointmentCounter++);
+}
+
 void addPatient() {
     Patient p;
-    cout << "Enter Patient ID: ";
-    cin >> p.id;
+    p.id = generatePatientId();
+    cout << "Generated Patient ID: " << p.id << "\n";
     cout << "Enter Name: ";
     cin.ignore();
     getline(cin, p.name);
@@ -49,13 +66,18 @@ void addPatient() {
     getline(cin, p.ailment);
 
     patients[p.id] = p;
-    cout << "Patient added successfully!\n";
+
+    // Automatically add ailment to medical history
+    medicalHistories[p.id].patientId = p.id;
+    medicalHistories[p.id].history.push_back("Initial Ailment: " + p.ailment);
+
+    cout << "Patient added successfully and ailment added to medical history!\n";
 }
 
 void addDoctor() {
     Doctor d;
-    cout << "Enter Doctor ID: ";
-    cin >> d.id;
+    d.id = generateDoctorId();
+    cout << "Generated Doctor ID: " << d.id << "\n";
     cout << "Enter Name: ";
     cin.ignore();
     getline(cin, d.name);
@@ -66,18 +88,44 @@ void addDoctor() {
     cout << "Doctor added successfully!\n";
 }
 
+bool isAppointmentConflict(const string &doctorId, const string &patientId, const string &date, const string &time) {
+    for (const auto &a : appointments) {
+        if ((a.doctorId == doctorId || a.patientId == patientId) && a.date == date && a.time == time) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void scheduleAppointment() {
     Appointment a;
-    cout << "Enter Appointment ID: ";
-    cin >> a.id;
+    a.id = generateAppointmentId();
+    cout << "Generated Appointment ID: " << a.id << "\n";
     cout << "Enter Patient ID: ";
     cin >> a.patientId;
+
+    if (patients.find(a.patientId) == patients.end()) {
+        cout << "Error: Patient ID not found!\n";
+        return;
+    }
+
     cout << "Enter Doctor ID: ";
     cin >> a.doctorId;
+
+    if (doctors.find(a.doctorId) == doctors.end()) {
+        cout << "Error: Doctor ID not found!\n";
+        return;
+    }
+
     cout << "Enter Date (YYYY-MM-DD): ";
     cin >> a.date;
     cout << "Enter Time (HH:MM): ";
     cin >> a.time;
+
+    if (isAppointmentConflict(a.doctorId, a.patientId, a.date, a.time)) {
+        cout << "Error: Appointment conflict! Either the doctor or patient is already booked at this date and time.\n";
+        return;
+    }
 
     appointments.push_back(a);
     cout << "Appointment scheduled successfully!\n";
@@ -102,16 +150,19 @@ void addMedicalHistory() {
     string patientId, historyEntry;
     cout << "Enter Patient ID: ";
     cin >> patientId;
+
     if (patients.find(patientId) == patients.end()) {
         cout << "Patient not found!\n";
         return;
     }
+
     cout << "Enter Medical History Entry: ";
     cin.ignore();
     getline(cin, historyEntry);
 
     medicalHistories[patientId].patientId = patientId;
     medicalHistories[patientId].history.push_back(historyEntry);
+
     cout << "Medical history added successfully!\n";
 }
 
@@ -119,10 +170,12 @@ void viewMedicalHistory() {
     string patientId;
     cout << "Enter Patient ID: ";
     cin >> patientId;
+
     if (medicalHistories.find(patientId) == medicalHistories.end()) {
         cout << "No medical history found for this patient.\n";
         return;
     }
+
     cout << "Medical History for Patient ID " << patientId << ":\n";
     for (const auto &entry : medicalHistories[patientId].history) {
         cout << "- " << entry << "\n";
@@ -138,6 +191,7 @@ void cancelAppointment() {
                         [&appointmentId](const Appointment &a) {
                             return a.id == appointmentId;
                         });
+
     if (it != appointments.end()) {
         appointments.erase(it, appointments.end());
         cout << "Appointment canceled successfully!\n";
