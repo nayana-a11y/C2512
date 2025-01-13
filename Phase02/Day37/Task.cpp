@@ -52,8 +52,17 @@ void server(int port) {
         exit(EXIT_FAILURE);
     }
 
-    // Prepare the vector
-    std::vector<int> numbers = {10, 20, 5, 15, 25};
+    // Request numbers from the user
+    std::vector<int> numbers;
+    int n;
+    std::cout << "Enter the number of elements: ";
+    std::cin >> n;
+    std::cout << "Enter " << n << " numbers:\n";
+    for (int i = 0; i < n; ++i) {
+        int num;
+        std::cin >> num;
+        numbers.push_back(num);
+    }
 
     // Promises and futures for sum and minimum
     std::promise<int> sumPromise, minPromise;
