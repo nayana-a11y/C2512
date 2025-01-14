@@ -15,55 +15,51 @@ private:
 public:
     Prescription(std::string p_id, int p_dosage) : prescriptionId(p_id), dosage(p_dosage) {}
 
-    friend double findSum(const std::vector<double>& pres);
-    friend void findMinInFirstHalf(const std::vector<double>& pres);
-    friend void findMaxInSecondHalf(const std::vector<double>& pres);
+    friend void findSum(const std::vector<int>& dosages);
+    friend void findMinInFirstHalf(const std::vector<int>& dosages);
+    friend void findMaxInSecondHalf(const std::vector<int>& dosages);
 };
 
- double findSum(const std::vector<double>& pres) {
-    double sum = 0;
-    for (double p_dosage : pres) {
+void findSum(const std::vector<int>& dosages) {
+    int sum = 0;
+    for (double p_dosage : dosages) {
         sum += p_dosage;
     }
-    return sum;
-    
 }
 
-void findMinInFirstHalf(const std::vector<double>& pres) {
+void findMinInFirstHalf(const std::vector<int>& dosages) {
 
-    for (int i = 1; i <= ((pres.size()-1) / 2) ; i++) {
-        if (pres[i] < min) {
-            min = pres[i];
+    for (int i = 1; i <= ((dosages.size()-1) / 2) ; i++) {
+        if (dosages[i] < min) {
+            min = dosages[i];
         }
     }
-    
 }
 
-void findMaxInSecondHalf(const std::vector<double>& pres) {
-    for (int i = ((pres.size() - 1) / 2); i < pres.size(); i++) {
-        if (pres[i] > max) {
-            max = pres[i];
+void findMaxInSecondHalf(const std::vector<int>& dosages) {
+    for (int i = ((pres.size() - 1) / 2); i < dosages.size(); i++) {
+        if (dosages[i] > max) {
+            max = dosages[i];
         }
     }
-    
 }
 
 int main() {
     std::string p_id;
     int p_dosage;
-    int sum;
 
-    std::vector<double> pres = {3, 2, 7, 4, 5};
+    std::vector<int> dosages = {3, 2, 7, 4, 5};
 
     Prescription prescription(p_id, p_dosage);
     
-    sum = prescription.findSum(pres);
+    
+    prescription.findSum(dosages);
     std::cout << "The total sum is: " << sum << std::endl;
 
-    prescription.findMinInFirstHalf(pres);
+    prescription.findMinInFirstHalf(dosages);
     std::cout << "The minimum is " << min << std::endl;
 
-    prescription.findMaxInSecondHalf(pres);
+    prescription.findMaxInSecondHalf(dosages);
     std::cout << "The maximum is: " << max << std::endl;
 
     return 0;
