@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 #include <unistd.h>
@@ -15,14 +14,12 @@ private:
 public:
     Prescription(string p_id, int p_dosage) : Prescription_id(p_id), Dosage(p_dosage) {}
 
-    string getPrescription_id(){ 
-        return Prescription_id; 
-    }
     int getDosage() 
     { 
         return Dosage; 
     }
 };
+
 
 //write_to_server read_fd
 //read_from_server write_fd 
@@ -37,20 +34,20 @@ void client(int read_fd, int write_fd) {
     };
 
     int size = prescriptions.size();
-    int arr[100];
+    int dosages[100];
 
     for (int i = 0; i < size; i++){
-        arr[i] = prescriptions[i].getDosage();
+        dosages[i] = prescriptions[i].getDosage();
     }
 
     cout << "Client sending dosages: ";
     for (int i = 0; i < size; ++i){
-        cout << arr[i] << " ";
+        cout << dosages[i] << " ";
     }
     cout << endl;
 
     write(read_fd, &size, sizeof(size));
-    write(read_fd, arr, sizeof(int)* size);
+    write(read_fd, dosages, sizeof(int)* size);
 
     int sum;
     read(write_fd, &sum, sizeof(sum));
@@ -59,8 +56,8 @@ void client(int read_fd, int write_fd) {
     close(read_fd);
     close(write_fd);
 }
-//read_from_client read_fd
-//write_to_client write_fd
+//read_from_client  read_fd
+//write_to_client   write_fd
 void server(int read_fd, int write_fd) {
     int buffer[100];
     int size;
@@ -74,6 +71,7 @@ void server(int read_fd, int write_fd) {
         cout << buffer[i] << " ";
         sum += buffer[i];
     }
+
     cout << endl;
 
     cout << "Server calculated sum: " << sum << endl;
@@ -112,3 +110,17 @@ int main() {
 
     return 0;
 }
+
+
+//two threads 
+// 1 to find sum of first half 
+// 2 to find sum of another half
+
+// and update the result to global variable 
+// race condition will occur 
+// lock
+
+
+
+
+
