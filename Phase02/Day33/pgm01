@@ -149,3 +149,117 @@ int main() {
     return 0;
 }
 
+...........
+
+#include <iostream>
+#include <vector>
+#include <thread>
+#include <mutex>
+
+using namespace std;
+
+class Prescription {
+private:
+    string prescriptionId;
+    double dosage;
+
+public:
+    Prescription(const string& prescriptionId, double dosage) : prescriptionId(prescriptionId), dosage(dosage) {}
+
+    double getDosage() const {
+        return dosage;
+    }
+};
+
+// Shared variables for communication
+vector<double> sharedData;
+double totalSum = 0;
+bool dataReady = false;
+bool resultReady = false;
+
+// Mutex to protect shared variables
+mutex mtx;
+
+void calculatePartialSum(const vector<double>& data, int start, int end, double& partialSum) {
+    partialSum = 0;
+    for (int i = start; i < end; ++i) {
+        partialSum += data[i];
+    }
+}
+
+void client(const vector<Prescription>& prescriptions) {
+    vector<double> buffer;
+    for (const auto& prescription : prescriptions) {
+        buffer.push_back(prescription.getDosage());
+    }
+
+    {
+        lock_guard<mutex> lock(mtx);
+        sharedData = buffer;
+        dataReady = true;
+        cout << "Client: Sending data to server...\n";
+    }
+
+    // Busy wait until the result is ready
+    while (true) {
+        {
+            lock_guard<mutex> lock(mtx);
+            if (resultReady) {
+                cout << "Client: Received total sum from server: " << totalSum << endl;
+                break;
+            }
+        }
+    }
+}
+
+void server() {
+    vector<double> data;
+
+    // Busy wait until the data is ready
+    while (true) {
+        {
+            lock_guard<mutex> lock(mtx);
+            if (dataReady) {
+                data = sharedData;
+                cout << "Server: Received data from client...\n";
+                break;
+            }
+        }
+    }
+
+    double firstHalfSum = 0, secondHalfSum = 0;
+
+    // Calculate partial sums in separate threads
+    thread t1(calculatePartialSum, cref(data), 0, data.size() / 2, ref(firstHalfSum));
+    thread t2(calculatePartialSum, cref(data), data.size() / 2, data.size(), ref(secondHalfSum));
+
+    t1.join();
+    t2.join();
+
+    {
+        lock_guard<mutex> lock(mtx);
+        totalSum = firstHalfSum + secondHalfSum;
+        resultReady = true;
+        cout << "Server: Calculated total sum: " << totalSum << endl;
+    }
+}
+
+int main() {
+    // Initialize Prescription objects
+    vector<Prescription> prescriptions = {
+        Prescription("p1", 50.5),
+        Prescription("p2", 25.0),
+        Prescription("p3", 75.5),
+        Prescription("p4", 40.0),
+        Prescription("p5", 30.0)
+    };
+
+    // Start client and server threads
+    thread clientThread(client, cref(prescriptions));
+    thread serverThread(server);
+
+    clientThread.join();
+    serverThread.join();
+
+    return 0;
+}
