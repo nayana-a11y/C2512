@@ -1,5 +1,4 @@
-
-                                                  -INTERVIEW QUESTIONS AND ANSWERS-
+INTERVIEW QUESTIONS AND ANSWERS
 
 
 58. User defined string copy function.
