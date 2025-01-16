@@ -112,15 +112,6 @@ int main() {
 }
 
 
-//two threads 
-// 1 to find sum of first half 
-// 2 to find sum of another half
-
-// and update the result to global variable 
-// race condition will occur 
-// lock
-
-
 
 
 
