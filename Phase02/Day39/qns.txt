@@ -1,4 +1,6 @@
 
+                                                  -INTERVIEW QUESTIONS AND ANSWERS-
+
 
 58. User defined string copy function.
     a user-defined string copy function to manually copy the contents of one string to another. 
@@ -6,12 +8,49 @@
 
 
 59. Oops- brief idea about all the subtopics.
+	1. Class and Object
+    Class: A blueprint for creating objects; it defines properties (attributes) and behaviors (methods).
+    Object: An instance of a class; it represents a specific entity with defined attributes and behaviors.
+2. Encapsulation
+    Definition: Wrapping data (variables) and methods (functions) into a single unit (class).
+    Purpose: Protects data from unauthorized access using access specifiers like private, protected, and public.
+3. Abstraction
+    Definition: Hiding unnecessary details and showing only essential features of an object.
+    Purpose: Simplifies complex systems by exposing only what is relevant (e.g., using abstract classes or pure virtual functions).
+4. Inheritance
+    Definition: A mechanism where a class (child) can acquire properties and behaviors from another class (parent).
+    Purpose: Promotes code reuse and establishes a relationship between classes.
+
+
+Types:
+    Single Inheritance: One child inherits from one parent.
+    Multiple Inheritance: One child inherits from multiple parents.
+    Multilevel Inheritance: A child inherits from a parent, and another class inherits from that child.
+    Hierarchical Inheritance: Multiple children inherit from one parent.
+    Hybrid Inheritance: Combination of two or more types of inheritance.
+5. Polymorphism
+    Definition: The ability of a single function, operator, or object to behave in different ways.
+Types:
+    Compile-time Polymorphism (Static Binding): Achieved using function overloading and operator overloading.
+    Run-time Polymorphism (Dynamic Binding): Achieved using virtual functions and pointers.
+6. Constructor and Destructor
+    Constructor: A special function automatically called when an object is created to initialize it. Example: MyClass().
+    Destructor: A special function automatically called when an object is destroyed to clean up resources. Example: ~MyClass().
+7. Friend Function
+    Definition: A function declared as a friend of a class that can access its private and protected members.
+    Purpose: Allows external functions or other classes to interact closely with a class.
+8. Operator Overloading
+    Definition: Defining custom behavior for operators (like +, -, *, etc.) for user-defined types.
+    Purpose: Makes code intuitive by enabling operators to work with objects.
+9. Virtual Functions and Abstract Classes
+    Virtual Function: A function that can be overridden in a derived class to provide specific behavior.
+    Abstract Class: A class containing at least one pure virtual function, meant to be a base class for other classes.
+
 
 60. Virtual Function Coding
 
         #include <iostream>
         using namespace std;
-        // Base class
         class Shape {
         public:
             // Declare a virtual function
@@ -20,7 +59,6 @@
             }
         };
 
-        // Derived class 1
         class Circle : public Shape {
         public:
             // Override the virtual function
@@ -29,7 +67,6 @@
             }
         };
 
-        // Derived class 2
         class Square : public Shape {
         public:
             // Override the virtual function
@@ -48,34 +85,29 @@
 
 61      Make a dynamic array and add elements using pointer to array.
 
-        #include <iostream>
-        using namespace std;
+            #include <iostream>
+            using namespace std;
 
-        int main() {
+            int main() {
+
             int n;  // Size of the array
-
-            // Ask user for the size of the array
             cout << "Enter the number of elements: ";
             cin >> n;
 
-            // Create a dynamic array using a pointer
             int* arr = new int[n];  // Allocate memory for 'n' integers
 
-            // Input elements into the array using pointer arithmetic
             cout << "Enter " << n << " elements:" << endl;
             for (int i = 0; i < n; ++i) {
                 cout << "Element " << i + 1 << ": ";
                 cin >> *(arr + i);  // Access elements using pointer
             }
 
-            // Display the elements of the array using pointer
             cout << "The entered elements are: ";
             for (int i = 0; i < n; ++i) {
                 cout << *(arr + i) << " ";  // Access elements using pointer
             }
             cout << endl;
 
-            // Free the dynamically allocated memory
             delete[] arr;
 
             return 0;
@@ -155,49 +187,42 @@
 
 66. How was the training in both Phase 1 and Phase 2?
 67. Which phase did you like most? Why?
+	I personally preferred Phase 2 over Phase 1 because it was conducted offline, and I enjoy offline classes much more than online ones.
 68. What topics did you learn during these two phases?
+	c++ programming language, coding standards, oracle database and sql quaries, oops in c++, smart poinrters, multi threding, multi processing, 
+    inter processing communication using pipes, messge ueue, shared memory, socket progrmming using tcp nd udp.
 69. What is OOPs, and why is it needed?
 
-Object-Oriented Programming (OOP) is a programming paradigm based on the concept of objects, which are instances of classes. 
-It focuses on organizing code into reusable and modular components by modeling real-world entities using classes and objects.
+	Object-Oriented Programming (OOP) is a programming paradigm based on the concept of objects, which are instances of classes. 
+	It focuses on organizing code into reusable and modular components by modeling real-world entities using classes and objects.
+	
+	Class
+	A blueprint or template for creating objects.
+	Defines properties (data members) and methods (member functions).
+	   
+	Object
+	An instance of a class.
+	Represents a specific entity with properties and behaviors.
+	
+	Encapsulation:
+	Bundling data (variables) and methods (functions) into a single unit (class).
+	Achieved through access specifiers like private, public, and protected.
+	
+	Inheritance
+	Mechanism where one class derives properties and behavior from another class.
+	Promotes code reuse.
+	
+	Polymorphism
+	The ability of a function or method to behave differently based on the context.
+	Types: Compile-time polymorphism (method overloading) and Run-time polymorphism (method overriding).
+	
+	Abstraction
+	Hiding unnecessary implementation details from the user and showing only essential features.
+	Achieved using abstract classes or interfaces.
+	
+	Encapsulation : Bundling data (variables) and methods (functions) into a single unit (class).
+	Achieved through access specifiers like private, public, and protected.
 
-Class
-A blueprint or template for creating objects.
-Defines properties (data members) and methods (member functions).
-   
-Object
-An instance of a class.
-Represents a specific entity with properties and behaviors.
-
-Encapsulation:
-Bundling data (variables) and methods (functions) into a single unit (class).
-Achieved through access specifiers like private, public, and protected.
-
-Inheritance
-Mechanism where one class derives properties and behavior from another class.
-Promotes code reuse.
-
-Polymorphism
-The ability of a function or method to behave differently based on the context.
-Types: Compile-time polymorphism (method overloading) and Run-time polymorphism (method overriding).
-
-Abstraction
-Hiding unnecessary implementation details from the user and showing only essential features.
-Achieved using abstract classes or interfaces.
-
-Encapsulation : Bundling data (variables) and methods (functions) into a single unit (class).
-Achieved through access specifiers like private, public, and protected.
-
-
-class Shape {
-public:
-    virtual void draw() = 0; // Pure virtual function
-};
-
-class Circle : public Shape {
-public:
-    void draw() override { cout << "Drawing Circle" << endl; }
-};
 
 
 Why is OOP Needed?
