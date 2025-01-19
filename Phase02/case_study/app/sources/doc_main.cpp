@@ -86,7 +86,7 @@ static int ReadDoctorMenu() {
     return choice;
 }
 
-void ManageDoctor() {
+void ManageDoctor1() {
     DoctorController controller;
 
     int choice;
