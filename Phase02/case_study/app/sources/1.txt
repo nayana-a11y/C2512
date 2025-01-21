@@ -1,0 +1,86 @@
+void Edit() {
+    uiCommon.TitleBar("Admin > Doctor Management > Edit Doctor");
+
+    // Assuming Doctor ID is required to edit a doctor
+    std::string doctorId = uiCommon.in.Str("Enter Doctor ID to edit: ");
+    // Logic to check if the doctor exists can be added here
+    std::cout << "Editing doctor details for ID: " << doctorId << std::endl;
+
+    int flags = 127; // Default to edit all fields
+    std::string name;
+    int gender = 0;
+    int department = 0;
+    std::string phone;
+    std::string email;
+    std::string location;
+    std::string address;
+
+    do {
+        Read(name, gender, department, phone, email, location, address, flags);
+
+        int proceedOption;
+
+        std::stringstream soutput;
+        soutput << "[1] edit `name`" << std::endl;
+        soutput << "[2] edit `gender`" << std::endl;
+        soutput << "[3] edit `department`" << std::endl;
+        soutput << "[4] edit `phone`" << std::endl;
+        soutput << "[5] edit `email`" << std::endl;
+        soutput << "[6] edit `location`" << std::endl;
+        soutput << "[7] edit `address`" << std::endl;
+        soutput << "[91] Confirm Changes" << std::endl;
+        soutput << "Enter your choice: ";
+        proceedOption = uiCommon.in.Int(soutput.str());
+
+        if (91 == proceedOption) {
+            // Save changes logic here
+            break;
+        }
+        flags = proceedOption;
+    } while (true);
+
+    std::cout << "Doctor details updated successfully." << std::endl;
+    uiCommon.PressAnyKey(true);
+}
+
+void View() {
+    uiCommon.TitleBar("Admin > Doctor Management > View Doctor");
+
+    // Assuming Doctor ID is required to view details
+    std::string doctorId = uiCommon.in.Str("Enter Doctor ID to view: ");
+    // Logic to fetch and display details
+    std::cout << "Details of Doctor with ID: " << doctorId << std::endl;
+    std::cout << "Name: Dr. John Doe" << std::endl;
+    std::cout << "Gender: Male" << std::endl;
+    std::cout << "Department: Cardiology" << std::endl;
+    std::cout << "Phone: +1234567890" << std::endl;
+    std::cout << "Email: johndoe@example.com" << std::endl;
+    std::cout << "Location: City Hospital" << std::endl;
+    std::cout << "Address: 123 Main Street" << std::endl;
+
+    uiCommon.PressAnyKey(true);
+}
+
+void Search() {
+    uiCommon.TitleBar("Admin > Doctor Management > Search Doctor");
+
+    std::string searchCriteria = uiCommon.in.Str("Enter search criteria (e.g., name, department, location): ");
+    // Logic to search and display matching doctors
+    std::cout << "Searching for doctors matching criteria: " << searchCriteria << std::endl;
+    std::cout << "Found 2 results:" << std::endl;
+    std::cout << "1. Dr. Jane Smith (ID: D002, Cardiology)" << std::endl;
+    std::cout << "2. Dr. Mark Lee (ID: D003, Neurology)" << std::endl;
+
+    uiCommon.PressAnyKey(true);
+}
+
+void Deactivate() {
+    uiCommon.TitleBar("Admin > Doctor Management > Deactivate Doctor");
+
+    std::string doctorId = uiCommon.in.Str("Enter Doctor ID to deactivate: ");
+    // Logic to deactivate doctor
+    std::cout << "Deactivating doctor with ID: " << doctorId << std::endl;
+    std::cout << "Doctor has been deactivated successfully." << std::endl;
+
+    uiCommon.PressAnyKey(true);
+}
